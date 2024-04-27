@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/');  // Replace with your backend URL
+        const response = await axiosgit.get('http://127.0.0.1:5000/');  // Replace with your backend URL
         setData(response.data.number);  // Access correct property from response data
         console.log('Data:', response.data); // Log the data to the console
       } catch (error) {
