@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../header'
 import './login.css'
 import axios from 'axios';
 import { useState } from 'react';
@@ -25,19 +26,20 @@ const Login = () => {
 
   return (
     <div class="container">
+      <Header></Header>
     <form class="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Login</button>
+      <h2>Login</h2>
+      <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      </div>
+      <button type="submit">Login</button>
     </form>
-</div>
+  </div>
   )
 }
 
