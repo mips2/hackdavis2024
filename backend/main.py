@@ -18,7 +18,8 @@ def login():
     username = data.get('username')#request.form['username']
     password = data.get('password')#request.form['password']
 
-    user = users_collection.find_one({'username': 'admin'})
+    print(username, password)
+    user = users_collection.find_one({'username': username})
 
     if user and user['password'] == password:
         # Authentication successful, set session
