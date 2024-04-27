@@ -25,20 +25,22 @@ const Login = () => {
       };
 
   return (
-    <div class="container">
+    <div>
       <Header></Header>
-    <form class="login-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <div class="container">
+        <form class="login-form" onSubmit={handleSubmit}>
+          <h2>Login</h2>
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <button type="submit">Login</button>
+        </form>
       </div>
-      <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
   </div>
   )
 }
