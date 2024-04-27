@@ -1,7 +1,20 @@
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';  // Import Axios
 
 function App() {
+  const [data, setData] = useState(null);  // State to store response data
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://127.0.0.1:5000/');  // Replace with your backend URL
+      setData(response.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">

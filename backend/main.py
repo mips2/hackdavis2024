@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print("Someone requested root path")
     return send_from_directory(os.path.join('..', 'front', 'build'), 'index.html')
 
 @app.route('/static/<path:path>')
