@@ -8,8 +8,13 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://127.0.0.1:5000/');  // Replace with your backend URL
-      setData(response.data);
+      try {
+        const response = await axios.get('http://127.0.0.1:5000/');  // Replace with your backend URL
+        setData(response.data.number);  // Access correct property from response data
+        console.log('Data:', response.data); // Log the data to the console
+      } catch (error) {
+        console.error('Error:', error);
+      }
     };
 
     fetchData();
@@ -20,7 +25,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          YO WSG <code>src/App.js</code> and save to reload.
+          YO WSG <code>yooooooo</code> Number is: {data !== null ? data : 'Loading...'}
         </p>
         <a
           className="App-link"
