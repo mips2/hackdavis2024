@@ -6,6 +6,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
 import Applications from './components/applications/applications';
+import Profile from './components/profile/profile';
 function App() {
   const [data, setData] = useState(null);  // State to store response data
   const [isLoggedIn, setLogin] = useState(false);
@@ -53,6 +54,7 @@ function App() {
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/login" element= {isLoggedIn ? (<Home />) : (<Login onLogin={handleLogin} />)}/>
       <Route path="/applications" element={<Applications/>}/>
+      <Route path="/profile" element={<Profile/>}/>
         
     </Routes>
   );
