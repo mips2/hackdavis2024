@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
+
 import { useNavigate } from 'react-router-dom';
 import JobCard from './JobCard'; // Assuming JobCard is in the same directory
+
 
 
 const SearchBar = ({ onSearchChange,onLocationChange }) => (

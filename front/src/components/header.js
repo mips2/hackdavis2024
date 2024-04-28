@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import accountCircleImg from './accountcircle.png';
 import "./header.css";
 
 const Header = () => {
@@ -25,21 +24,17 @@ const Header = () => {
   };
 
   return (
-    <div className='header'>
-      <div className="header-content">
-        <nav className="navigation">
-          <a href="/" className={`nav-link ${currentTab === "Home" ? "active" : ""}`} onClick={() => handleTabClick("Home")}>
-            Home
-          </a>
-          <a href="/applications" className={`nav-link ${currentTab === "My Applications" ? "active" : ""}`} onClick={() => handleTabClick("My Applications")}>
-            My Applications
-          </a>
-          <a href="/profile" className={`nav-link ${currentTab === "Profile" ? "active" : ""}`} onClick={() => handleTabClick("Profile")}>
-            <img src={accountCircleImg} alt="User avatar" className="user-avatar" />
-          </a>
+      <header>
+        <h1>Welcome {localStorage.getItem('username')}</h1>
+        <nav>
+            <ul>
+                <li><a href="/"></a></li>
+                <li><a href="/applications">My Applications</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout" className="logout-button">Logout</a></li>
+            </ul>
         </nav>
-      </div>
-    </div>
+      </header>
   );
 }
 

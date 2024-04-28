@@ -67,7 +67,7 @@ const ProfileUpdate = () => {
     }
   };
   return (
-    <div>
+    <div className="body">
       <form onSubmit={submitEducation}>
         <h2>Education</h2>
         <input className="edu" type="text" name="School" placeholder="School" value={education.school} onChange={handleEducationChange} />
