@@ -195,7 +195,21 @@ def register():
         results = users_collection.insert_one(document)
         return dict(status = 200, number = 99,message="test")
     
-
+@app.route('/profile1', methods=['GET', 'POST'])
+def profileData():
+    data = request.json
+    user = data.get('username')
+    user = users_collection.find_one({'username': user})
+    if user:
+        return json_util.dumps({
+            "status": 200,
+            "data": user
+        })
+    else:
+        return json_util.dumps({
+            "status": 401,
+            "message": "No user found with that username"
+        })
 
 if __name__ == '__main__':
     app.run(debug=True)

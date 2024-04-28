@@ -3,6 +3,8 @@
     align-items: center; /* Vertically center the job card */
     justify-content: center;
     flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+
 }
 
 .job-card {
@@ -16,6 +18,11 @@
     gap: 40px;
     justify-content: space-between;
 }
+.job-card-container:hover {
+    transform: scale(1.05); /* Enlarges the card slightly */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds shadow for highlighting */
+    
+  }
 
 .company-logo {
     flex: 0 0 22%; /* Added flex properties to control width */

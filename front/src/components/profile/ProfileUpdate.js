@@ -29,6 +29,7 @@ const ProfileUpdate = () => {
     e.preventDefault();
     console.log('Submitting Education:', education);
     updateProfile("Education",education);
+      
   };
 
   const submitWorkExperience = (e) => {
