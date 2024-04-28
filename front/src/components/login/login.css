@@ -17,14 +17,20 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     height: 100vh;
-    margin-right: 300px;
+    margin-right: 100px;
 }
 
-.container2 h2,
+.container2 h1 {
+    font-family: 'Courier New', monospace;
+    font-size: 60px; /* Adjust based on your preference */
+    font-weight: normal; /* More authentic to Facebook's style */
+    color: #007bff;
+    
+}
 .container2 p {
-    display: block;
+    font-family: 'Times New Roman', serif;
+    font-size: 40px;
 }
 
 .wrap {
@@ -58,6 +64,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
     height: 30px;
+    font-size: 20px;
 }
 
 button[type="submit"] {
@@ -97,4 +104,15 @@ button[type="register"]:hover {
 
 .password, .username {
     margin-bottom: 10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrap {
+        flex-direction: column;
+    }
+    .container2 {
+        align-items: center;
+    }
 }
