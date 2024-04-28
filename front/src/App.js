@@ -44,6 +44,8 @@ function App() {
         console.log(response);  
         console.log('login successfull');
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', username);
+        console.log("user: " + localStorage.getItem('username'));
         return true;
       }
     } catch (error) {
