@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ProfileComponent from './ProfileComponent';
 import Header from '../header';
+import ProfileComponent from './ProfileComponent';
 import './profile.css';
 
 import Login from '../login/Login';
@@ -151,7 +151,7 @@ const renderField = (field) => {
     return (
       <div>
         <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
-        <p>{values[field]} <button onClick={() => toggleEditMode(field)}>Edit</button></p>
+        <p>{values[field]} <button className="buttonedit"onClick={() => toggleEditMode(field)}>Edit</button></p>
       </div>
     );
   }
