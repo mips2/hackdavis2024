@@ -30,7 +30,7 @@ const Login = ({onLogin,isLoggedIn}) => {
   return (
     <div class="wrap">
       <div class="container2">
-        <h1>Website Name</h1>
+        <h1>Emply</h1>
         <p>A new approach to applying for jobs.</p>
       </div>
       <div class="container">
