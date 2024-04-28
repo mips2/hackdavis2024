@@ -72,7 +72,6 @@ function App() {
       <Route path="/profileupdate" element={<ProfileUpdate />} />
       <Route path="/applypage/:id" element={<Applypage />} />
 
-        
     </Routes>
   );
 }

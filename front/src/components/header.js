@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./header.css";
+import logo from './logo.jpg';
 
 const Header = () => {
   const [currentTab, setCurrentTab] = useState(""); // State to keep track of current tab
@@ -25,6 +26,7 @@ const Header = () => {
 
   return (
     <header>
+      <img className="logo" src={logo} alt="logo" />
       <h1>Welcome {localStorage.getItem('username')}!</h1>
       <nav>
         <ul>
