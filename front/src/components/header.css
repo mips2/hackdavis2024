@@ -1,6 +1,6 @@
 .header {
     border-radius: 70px;
-    background-color: #305bf4;
+    background-color: #79addc;
     align-self: stretch;
     display: flex;
     gap: 20px;
@@ -24,7 +24,7 @@
 
 .navigation a{
     font-family: Arial, sans-serif;
-    color: #fff;
+    color: #000000;
     flex-grow: 1;
     flex-basis: auto;
     margin: auto 0;
@@ -37,7 +37,7 @@
 .navigation a.active {
     color: black; /* Change the color of active link */
     border-radius: 70px;
-    background-color: #f5e4ea;
+    background-color: 	#ff9770;
     color: #000;
     white-space: nowrap;
     justify-content: center;
