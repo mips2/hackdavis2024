@@ -143,26 +143,36 @@ const Home = ({ jobs }) => {
   const handleLocationChange = (term) => {
     setLocationTerm(term);
   };
-return (
-  <div>
-    <Header></Header>
-    <div className="app">
-      <main className="main-content">
-        <SearchBar onSearchChange={handleSearchChange} onLocationChange={handleLocationChange} />
-        <div className="filters">
-          <FilterButton onClick={() => toggleFilter('fullTime')}>Full-Time</FilterButton>
-          <FilterButton onClick={() => toggleFilter('partTime')} >Part-Time</FilterButton>
-          <FilterButton onClick={() => toggleFilter('softwareEngineering')}>Software Engineering</FilterButton>
-          <FilterButton onClick={() => toggleFilter('computerScience')}>Computer Science</FilterButton>
-          <FilterButton>Filters - 4</FilterButton>
+  if (localStorage.getItem('isCompany') === false){
+    return (
+      <div>
+        <Header></Header>
+        <div className="app">
+          <main className="main-content">
+            <SearchBar onSearchChange={handleSearchChange} onLocationChange={handleLocationChange} />
+            <div className="filters">
+              <FilterButton onClick={() => toggleFilter('fullTime')}>Full-Time</FilterButton>
+              <FilterButton onClick={() => toggleFilter('partTime')} >Part-Time</FilterButton>
+              <FilterButton onClick={() => toggleFilter('softwareEngineering')}>Software Engineering</FilterButton>
+              <FilterButton onClick={() => toggleFilter('computerScience')}>Computer Science</FilterButton>
+              <FilterButton>Filters - 4</FilterButton>
+            </div>
+            {displayedJobs.map((job) => (
+              <JobCard key={job._id.$oid} job={job} />
+            ))}
+          </main>
         </div>
-        {displayedJobs.map((job) => (
-          <JobCard key={job._id.$oid} job={job} />
-        ))}
-      </main>
-    </div>
-  </div>
-)
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <h1>You are on a company page because you are company account.</h1>
+      </div>
+    )
+  }
+
 }
 
 export default Home;
