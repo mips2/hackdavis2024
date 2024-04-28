@@ -1,6 +1,7 @@
 # Emply
 
-Emply is //todo - explain what the website is
+Emply is a site intended for employers and applicants who are looking for specific matches. By limiting the amount of applications an applicant can submit, it forces them to be selective reagrding where they apply to. On the employer endpoint, the reduced amount of applications would allow them to have a smaller pool of applications to choose from, and the ones that'd they see are ones who are genuinely interested in that specific position at that compnay. This counters oversaturation of applications. 
+The idea is to give each individual applicant a fighting chance when applying as they are not competing against "ghost" applications (people who apply to 100 different positions but are really only interested in 5-6 specific positions)
 
 ## Backend:
 
