@@ -22,7 +22,7 @@
 
     .job-title {
       color: #000;
-      margin-top: 84px;
+      margin-top: 0px;
       font: 48px Arial, sans-serif;
     }
 
@@ -147,4 +147,22 @@
       font: 48px Arial, sans-serif;
       border: none;
       cursor: pointer;
+    }
+
+    .go-back {
+      position: absolute;
+      top: 20px; /* Adjust as needed */
+      left: 50px; /* Adjust as needed */
+      background-color: transparent;
+      align-items: center;
+    }
+    
+    .go-back a {
+      display: flex;
+      align-self: flex-start;
+      width: 200px;
+      height: 60px;
+      font-size: 24px;
+      text-decoration: none;
+      color: black;
     }
