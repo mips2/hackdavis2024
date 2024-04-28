@@ -48,6 +48,6 @@ button {
     margin-bottom: 20px;
 }
 
-button:hover {
-    background-color: #4a54e1;
+button[type="submit"]:hover {
+    background-color: #19bb3f;
 }
