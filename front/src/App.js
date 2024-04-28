@@ -8,6 +8,8 @@ import Login from './components/login/Login';
 import Applications from './components/applications/applications';
 import Profile from './components/profile/profile';
 import Logout from './components/logout/Logout';
+import Register from './components/register/register';
+
 function App() {
   console.log("logged in: " + localStorage.getItem('isLoggedIn'));
   const [data, setData] = useState(null);  // State to store response data
@@ -56,6 +58,7 @@ function App() {
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/logout" element={<Logout />} />
       <Route path="/login" element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
+      <Route path="/register" element={<Register />} />
 
         
     </Routes>
