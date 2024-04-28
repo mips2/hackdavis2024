@@ -32,7 +32,15 @@ def login():
         print("Failed")
         return dict(status=401, message='Invalid credentials')
 
-
+@app.route('/update_profile', methods=['POST'])
+def update_profile():
+    print("Unpacking ...")
+    data = request.json
+    print("Attribute to change: ", data.get('attribute_changed'))
+    print("New Value: ", data.get('new_attr_value'))
+    # TODO
+    # database interactions
+    return dict(status = 200)
 
 
 @app.route('/')
