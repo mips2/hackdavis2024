@@ -14,7 +14,10 @@ function Applications() {
         username,
       });
       if (response.data.status !== 200) {
+
         console.log("applications failed");
+
+
         console.log(response);
         return false;
       } else {

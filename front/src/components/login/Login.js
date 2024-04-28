@@ -2,10 +2,7 @@ import React from 'react'
 import './login.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../header';
-import axios from 'axios';
 import Home from '../home/Home';
-import { useEffect } from 'react';
 const Login = ({onLogin,isLoggedIn}) => {
 
     const [username, setUsername] = useState('');
