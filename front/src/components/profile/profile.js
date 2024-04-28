@@ -1,8 +1,82 @@
-import React from 'react'
-import Header from '../header'
-import './profile.css'
+import React, { useState } from 'react';
+import './profile.css';
 
 const Profile = () => {
+  // State for edit mode of different fields
+  const [editMode, setEditMode] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    address: false,
+  });
+
+  // State for the values of different fields
+  const [values, setValues] = useState({
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    phone: '+1234567890',
+    address: '123 Main St, City, Country',
+  });
+
+  // State for storing original values before editing
+  const [originalValues, setOriginalValues] = useState({});
+
+  // Function to handle changes in field values
+  const handleChange = (field, value) => {
+    setValues({ ...values, [field]: value });
+  };
+
+  // Function to toggle edit mode of a field
+  const toggleEditMode = (field) => {
+    setOriginalValues({ ...values }); // Save original values before editing
+    setEditMode({ ...editMode, [field]: !editMode[field] });
+  };
+
+  // Function to save changes and exit edit mode
+  const saveChanges = (field) => {
+    setEditMode({ ...editMode, [field]: false });
+  };
+
+  // Function to cancel changes and exit edit mode
+  const cancelChanges = (field) => {
+    setValues({ ...originalValues }); // Revert to original values
+    setEditMode({ ...editMode, [field]: false });
+  };
+
+  // Function to handle key press events in input fields
+  const handleKeyPress = (event, field) => {
+    if (event.key === 'Enter') {
+      saveChanges(field);
+    }
+  };
+
+  // Render input field or plain text based on edit mode
+  const renderField = (field) => {
+    if (editMode[field]) {
+      return (
+        <div>
+          <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+          <input
+            id={field}
+            value={values[field]}
+            onChange={(e) => handleChange(field, e.target.value)}
+            onKeyDown={(e) => handleKeyPress(e, field)}
+            autoFocus
+          />
+          <button onClick={() => saveChanges(field)}>Save</button>
+          <button onClick={() => cancelChanges(field)}>Cancel</button>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+          <p>{values[field]} <button onClick={() => toggleEditMode(field)}>Edit</button></p>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="ProfilePage">
       <header>
@@ -12,7 +86,7 @@ const Profile = () => {
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Jobs</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="/logout" class="logout-button">Logout</a></li>
+                <li><a href="/logout" className="logout-button">Logout</a></li>
             </ul>
         </nav>
       </header>
@@ -20,23 +94,10 @@ const Profile = () => {
         <section className="profile-info">
           <h2>Profile Information</h2>
           <div className="profile-details">
-            <div>
-              <label htmlFor="name">Name:</label>
-              <p>John Doe</p>
-            </div>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <p>johndoe@example.com</p>
-            </div>
-            <div>
-              <label htmlFor="phone">Phone:</label>
-              <p>+1234567890</p>
-            </div>
-            <div>
-                <label htmlFor="address">Address:</label>
-                <p>123 Main St, City, Country</p>
-            </div>
-            {/* Add more profile details as needed */}
+            {renderField('name')}
+            {renderField('email')}
+            {renderField('phone')}
+            {renderField('address')}
           </div>
         </section>
         <section className="job-applications">
@@ -55,12 +116,9 @@ const Profile = () => {
             {/* Add more job applications as needed */}
           </ul>
         </section>
-        <div className="education">
-          <h2>Education</h2>
-        </div>
       </main>
-  </div>
-  )
+    </div>
+  );
 }
 
 export default Profile;
