@@ -3,6 +3,7 @@ import os
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson.json_util import dumps
+from bson import ObjectId, json_util
 
 app = Flask(__name__)
 CORS(app)
@@ -59,6 +60,48 @@ def index():
     print("Someone requested root path")
     
     return dict(status = 200, number = 99,data=json_data)
+
+@app.route('/applications',methods=['GET','POST'])
+def applications():
+    data = request.json
+    user = db.Users.find_one({"username": data.get('username')}, {"_id": 1})
+
+    if user:
+        user_id = user['_id']
+        all_applications = list(db.applications.find({"ApplicantID": ObjectId(user_id)}))
+
+        applications_details = []
+
+        for application in all_applications:
+            application_status = application['Status']
+
+            job_details = db.Jobs.find_one({"_id": ObjectId(application['JobID'])}, {"company": 1,"logo":1,"title":1, "_id": 0})
+            print(application['JobID'])
+            if job_details:
+                company_name = job_details['company'] 
+                job_title = job_details['title']
+                job_logo = job_details['logo']
+
+                applications_details.append({
+                    "company_name": company_name,
+                    "application_status": application_status,
+                    "job_title": job_title,
+                    "job_logo": job_logo
+                })
+
+        json_data = json_util.dumps({
+            "status": 200,
+            "number": len(all_applications),
+            "data": applications_details
+        })
+
+        return json_data
+
+    else:
+        return json_util.dumps({
+            "status": 401,
+            "message": "No user found with that username"
+        })
 
 @app.route('/static/<path:path>')
 def serve_static(path):
