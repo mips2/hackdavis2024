@@ -5,6 +5,7 @@ import axios from 'axios';  // Import Axios
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
+import Applications from './components/applications/applications';
 function App() {
   const [data, setData] = useState(null);  // State to store response data
   const [isLoggedIn, setLogin] = useState(false);
@@ -51,6 +52,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login onLogin={handleLogin} />} />
       <Route path="/login" element= {isLoggedIn ? (<Home />) : (<Login onLogin={handleLogin} />)}/>
+      <Route path="/applications" element={<Applications/>}/>
         
     </Routes>
   );
