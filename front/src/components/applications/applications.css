@@ -1,82 +1,89 @@
-/* Reset styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header h1 {
-    margin-bottom: 10px;
+.num-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 20px;
+    gap: 100px;
 }
 
-.logout-button {
-    /* Style the logout link to resemble a button */
-    display: inline-block;
-    padding: 0.5em 1em; /* Adjust padding as needed */
-    background-color: #ff3d3d; /* Adjust background color */
-    color: #333; /* Adjust text color */
-    text-decoration: none; /* Remove underline */
-    border: 1px solid #ff3d3d; /* Add border */
-    border-radius: 4px; /* Add rounded corners */
-    cursor: pointer; /* Set cursor to pointer on hover */
-    transition: background-color 0.2s ease-in-out; /* Optional: Smooth hover effect */
+.numjob{
+    color: #86dc3d;
+}
+.numapp{
+    color: #c21807;
+}
+
+.refreshrate{
+    color: #e0c200;
+}
+
+.app-card-container {
+    display: flex;
+    align-items: center; /* Vertically center the job card */
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 50px;
+}
+  
+.app-card {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    background-color: #fff;
+    margin-top: 18px;
+    width: 100%;
+    padding: 18px 30px;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+  
+  .company-logo {
+    flex: 0 0 22%; /* Added flex properties to control width */
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Center items horizontally */
+    margin-right: 2%;
+    margin-left: 2%;
   }
   
-  .logout-button:hover {
-    background-color: #ff2626; /* Adjust hover background color */
+  .company-logo img {
+    max-width: 100%; /* Change width to max-width */
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .job-details {
+    flex: 1; /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    font-weight: 400;
+    margin-top: 0;
+    padding: 0;
+  }
+  
+  .job-header {
+    display: flex;
+    justify-content: space-between; /* Align items at the start and end */
+    align-items: center; /* Vertically center items */
+  }
+  
+  .job-title {
+    padding: 0;
+    margin: 0;
+    font: 32px Arial, sans-serif;
+  }
+  
+  .job-meta {
+    display: flex;
+    gap: 10px;
   }
 
-  /* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  .app-status {
+    font: 22px Arial, sans-serif;
 }
-
-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 20px;
-}
-
-header h1 {
-    margin-bottom: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.container ul {
-    list-style-type: none;
-}
-
-.container ul li {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.container {
-    margin-bottom: 40px;
-    
-}
-
-.container h2 {
-    margin-bottom: 10px;
-}
+  
