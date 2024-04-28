@@ -6,65 +6,95 @@ import Header from '../header';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-const Register = ({onLogin,isLoggedIn}) => {
-
+const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        const isLoggedIn1 = localStorage.getItem('isLoggedIn') === 'true';
-        if (isLoggedIn1) {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
             navigate('/');  // Redirects to the home page if the user is already logged in
         }
-    }, [isLoggedIn, navigate]);  
+    }, [navigate]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const result = await onLogin(username, password);
-        if (result === true) {
-          console.log('login successful');
-          
-          navigate('/');
+    const handleRegister = async (event) => {
+        event.preventDefault(); 
+        if (password !== confirmPassword) {
+            console.error('Passwords do not match');
+            return;
         }
-      };
 
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/register', {
+                username,
+                password,
+                name,
+                email,
+                phone,
+                address
+            });
+
+            if (response.data.status === 401) {
+                console.error('Registration failed');
+                setName('');
+                setEmail('');
+                setPhone('');
+                setAddress('');
+                setUsername('');
+                setPassword('');
+                setConfirmPassword('');
+
+            } else {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+                navigate('/'); 
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
+        }
+    };
+    
   return (
     <div class="background">
         <div class="register-container">
-            <form class="register-form">
+            <form class="register-form" onSubmit={handleRegister}>
                 <h2>Register New Account</h2>
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" placeholder="Enter your name" id="name" name="name" required />
+                    <input type="text" placeholder="Enter your name" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" placeholder="Enter your email" id="email" name="email" required />
+                    <input type="text" placeholder="Enter your email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div class="form-group">
                     <label for="phone-number">Phone Number:</label>
-                    <input type="text" placeholder="Enter your phone number" id="phone-number" name="phone-number" required />
+                    <input type="text" placeholder="Enter your phone number" id="phone-number" name="phone-number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" placeholder="Enter your address" id="address" name="address" required />
+                    <input type="text" placeholder="Enter your address" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} required />
                 </div>
                 <div class="form-group">
 
                     <label for="username">Username:</label>
-                    <input type="text" placeholder="Enter your username" id="username" name="username" required />
+                    <input type="text" placeholder="Enter your username" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" placeholder="Enter your password" id="password" name="password" required />
+                    <input type="password" placeholder="Enter your password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" placeholder="Confirm password" id="confirm-password" name="confirm-password" required />
+                    <input type="password" placeholder="Confirm password" id="confirm-password" name="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
 
                 </div>
-                <button type="submit">Register</button>
+                <button type="register">Register</button>
             </form>
         </div>
     </div>

@@ -27,7 +27,10 @@ const Login = ({onLogin,isLoggedIn}) => {
           navigate('/');
         }
       };
-
+      const handleRegister = () => {
+        // Code to execute when the button is clicked
+        navigate('/register');
+      };
   return (
     <div class="wrap">
       <div class="container2">
@@ -45,7 +48,7 @@ const Login = ({onLogin,isLoggedIn}) => {
               <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
           <button type="submit">Log In</button>
-          <button type="register">Create New Account</button>
+          <button type="register" onClick={handleRegister}>Create New Account</button>
         </form>
       </div>
 

@@ -2,23 +2,7 @@ import React from 'react';
 import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
-
-const jobs = [
-{
-  id: 1,
-  title: "Software Engineering Intern",
-  company: "Rhombus",
-  location: "Sacramento, CA, United States",
-  logo: "https://cdn.builder.io/api/v1/image/assets/TEMP/78372856bd769bc9d16b12a5ee04e715746b253fb0be0d90709c7d022b6a70e7?apiKey=c7598dd2036b4baf9e49409c4a6781c6&",
-},
-{
-  id: 2,
-  title: "Software Engineering Intern",
-  company: "Intel",
-  location: "Santa Clara, CA, United States",
-  logo: "https://cdn.builder.io/api/v1/image/assets/TEMP/070e233e13f9b1f3a5d2f1d81593dbad8b5060bd18a0b85807c51efdda09eea8?apiKey=c7598dd2036b4baf9e49409c4a6781c6&",
-},
-];
+import { useState,useEffect} from 'react';
 
 const JobCard = ({ job }) => (
 <div className ="job-card-container">
@@ -77,11 +61,25 @@ const SearchBar = () => (
 </div>
 );
 
-const FilterButton = ({ children }) => (
-<button className="filter-btn">{children}</button>
+const FilterButton = ({ children, onClick }) => (
+  <button className="filter-btn" onClick={onClick}>
+    {children}
+  </button>
 );
+const Home = ({ jobs }) => {
+  const [jobs1, setJobs1] = useState(jobs);
+  
+  useEffect(() => {
+    setJobs1(jobs);
+  }, [jobs]);
 
-const Home = () => {
+  const handleFilterSacramento = () => {
+    console.log("filtering");
+    const filtered = jobs1.filter(job => job.location === "Sacramento, CA, United States");
+    setJobs1(filtered);
+  };
+  console.log("home");
+  console.log(jobs);
   if (localStorage.getItem('isLoggedIn') === 'false') {
       window.location.href = '/login';
       return <Login/>
@@ -93,14 +91,14 @@ return (
       <main className="main-content">
         <SearchBar />
         <div className="filters">
-          <FilterButton>Full-Time</FilterButton>
+          <FilterButton onClick={handleFilterSacramento}>Full-Time</FilterButton>
           <FilterButton>Part-Time</FilterButton>
           <FilterButton>Software Engineering</FilterButton>
           <FilterButton>Computer Science</FilterButton>
           <FilterButton>Filters - 4</FilterButton>
         </div>
-        {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
+        {jobs1.map((job) => (
+          <JobCard key={job._id.$oid} job={job} />
         ))}
       </main>
     </div>
