@@ -1,12 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProfileComponent from './ProfileComponent';
-
-
 import Header from '../header';
-
-import { useEffect } from 'react';
-
 import './profile.css';
 
 import Login from '../login/Login';

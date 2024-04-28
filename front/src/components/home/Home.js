@@ -4,8 +4,6 @@ import Header from '../header';
 import Login from '../login/Login';
 import CompanyPage from '../company/company';
 import './home.css';
-
-import { useNavigate } from 'react-router-dom';
 import JobCard from './JobCard'; // Assuming JobCard is in the same directory
 
 
