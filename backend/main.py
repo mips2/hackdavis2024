@@ -230,7 +230,7 @@ def should_reset():
     # Check if today is Sunday and current time is around midnight PST
     print("Checking if its sunday")
     now = datetime.now(pytz.timezone('US/Pacific'))
-    if now.weekday() == 6 and now.hour == 9:  # 6 == Sunday, 0 == midnight
+    if now.weekday() == 6 and now.hour == 0:  # 6 == Sunday, 0 == midnight
         reset_apps_value()
 if __name__ == '__main__':
     reset_apps_value()
