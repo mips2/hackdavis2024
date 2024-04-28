@@ -35,8 +35,7 @@ const Register = () => {
                 name,
                 email,
                 phone,
-                address
-            });
+                address            });
 
             if (response.data.status === 401) {
                 console.error('Registration failed');
