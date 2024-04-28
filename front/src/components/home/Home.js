@@ -21,6 +21,7 @@ const jobs = [
 ];
 
 const JobCard = ({ job }) => (
+<div className ="job-card-container">
 <article className="job-card">
   <div className="company-logo">
     <img src={job.logo} alt={`${job.company} logo`} />
@@ -28,7 +29,9 @@ const JobCard = ({ job }) => (
   <div className="job-details">
     <div className="job-header">
       <h3 className="job-title">{job.title}</h3>
+      <div className="buttoncont">
       <button className="quick-apply-btn">Quick Apply</button>
+      </div>
     </div>
     <div className="job-meta">
       <p className="company-location">
@@ -36,10 +39,13 @@ const JobCard = ({ job }) => (
         <br />
         {job.location}
       </p>
+      <div className="buttoncont">
       <button className="external-apply-btn">Apply Externally</button>
+      </div>
     </div>
   </div>
 </article>
+</div>
 );
 
 const SearchBar = () => (
