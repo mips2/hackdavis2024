@@ -36,19 +36,19 @@ const Register = ({onLogin,isLoggedIn}) => {
                 <h2>Register New Account</h2>
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required />
+                    <input type="text" placeholder="Enter your name" id="name" name="name" required />
                 </div>
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required />
+                    <input type="text" placeholder="Enter your username" id="username" name="username" required />
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
+                    <input type="password" placeholder="Enter your password" id="password" name="password" required />
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required />
+                    <input type="password" placeholder="Enter your password" id="confirm-password" name="confirm-password" required />
                 </div>
                 <button type="submit">Register</button>
             </form>
