@@ -114,9 +114,26 @@ button[type="register"]:hover {
 
 @media only screen and (max-width: 768px) {
     .wrap {
+        display: flex;
         flex-direction: column;
+        box-sizing: border-box;
+        justify-content: center;
+        margin: 0; /* Remove default margins */
+        padding: 0; /* Remove default paddings */
     }
-    .container2 {
-        align-items: center;
+    .container2,
+    .container {
+        margin: 0; /* Eliminate margin to remove space between containers */
+        padding: 0; /* Remove padding for a tighter fit */
+        width: 100%; /* Ensure full width utilization */
+    }
+    .container2 h1,
+    .container2 p {
+        text-align: center; /* Center-align the text */
+        font-size: 40px; /* Adjusted font size for mobile */
+    }
+    .login-form {
+        width: auto; /* Allow form width to adapt more naturally to inner content */
+        padding: 20px; /* Ensure padding inside the form for better aesthetics */
     }
 }
