@@ -4,6 +4,8 @@ background-color: beige;
 
 .button1{
     width: 220px;
+    background-color: #007bff;
+    margin-left: 4px;
 }
 .edu, .work, .skill {
     height: 50px;

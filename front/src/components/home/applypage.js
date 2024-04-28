@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import axios from 'axios';
+import React, { useState } from 'react';
+import './applypage.css';
 
 function InputField({ label, name, type, value, onChange, placeholder }) {
   return (
@@ -75,6 +76,9 @@ function ApplyPage() {
 
   return (
     <main className="main-container">
+      <button className="go-back">
+        <a href="./" className="redirect-link">&#x2190; Go back</a>
+      </button>
       <h1 className="job-title">Rhombus - Software Engineering Intern</h1>
       <div className="job-location">Sacramento, CA, United States</div>
       <form onSubmit={handleSubmit}>
