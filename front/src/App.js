@@ -31,7 +31,7 @@ function App() {
     try {
       const response = await axios.post('http://127.0.0.1:5000/login', {
         username,
-        password,
+        password
       });
       console.log('Post created successfully');
       if (response.data.status !== 200) {
@@ -41,6 +41,9 @@ function App() {
       else{
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
+        // logic to ensure isCompany is true/false
+        localStorage.setItem('isCompany', response.data.isCompany);
+        console.log("Is company: " + localStorage.getItem("isCompany"))
         return true;
       }
     } catch (error) {

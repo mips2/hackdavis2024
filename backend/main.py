@@ -27,8 +27,9 @@ def login():
         # Authentication successful, set session
         session['logged_in'] = True
         session['username'] = username
+        isCompany = user['isCompany']
         print("Success")
-        return dict(status=200, message='Logged in successfully', user = username)
+        return dict(status=200, message='Logged in successfully', user = username, isCompany = isCompany)
         
     else:
         print("Failed")
