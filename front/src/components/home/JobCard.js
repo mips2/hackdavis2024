@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './home.css';
 
+
 function InputField({ label, type, id, placeholder }) {
   return (
     <div className="input-field">

@@ -37,8 +37,12 @@ const SearchBar = ({ onSearchChange,onLocationChange }) => (
   </div>
 );
 
-const FilterButton = ({ children, onClick }) => (
-  <button className="filter-btn" onClick={onClick}>
+const FilterButton = ({ children, onClick, isSelected }) => (
+
+  <button
+    className={`filter-btn ${isSelected ? 'selected' : ''}`}
+    onClick={onClick}
+  >
     {children}
   </button>
 );

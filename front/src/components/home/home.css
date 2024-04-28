@@ -17,6 +17,7 @@
     display: flex;
     gap: 40px;
     justify-content: space-between;
+    align-content: center;
 }
 .job-card-container:hover {
     transform: scale(1.05); /* Enlarges the card slightly */
@@ -70,8 +71,7 @@
     height: 60px;
     text-align: center;
     background-color: #ff9770;
-    margin: auto 0;
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 16px 60px;
 }
 
@@ -190,8 +190,22 @@
 }
 
 .filter-btn {
-    white-space: initial;
-    padding: 0 20px;
+  font-family: Arial, sans-serif;
+  border-radius: 20px;
+  background-color: #007bff;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 12px 25px;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.filter-btn.selected {
+  background-color: #000000;
+  color: #ff0000; 
+
 }
 
 .job-card {
