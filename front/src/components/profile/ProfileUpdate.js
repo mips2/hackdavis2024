@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import './ProfileUpdate.css';
+import { Navigate } from 'react-router-dom';
+import Profile from './profile';
 
 const ProfileUpdate = () => {
   const [education, setEducation] = useState({
@@ -58,9 +60,9 @@ const ProfileUpdate = () => {
         return false;
       }
       else{
-        console.log('login succeeded');
+        console.log('update success, redirecting');
         console.log(response);
-        return true;
+        window.location.href = '/profile';
       }
     } catch (error) {
         console.log(error);
