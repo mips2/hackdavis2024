@@ -2,7 +2,6 @@ import React from 'react'
 import './register.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../header';
 import axios from 'axios';
 import { useEffect } from 'react';
 

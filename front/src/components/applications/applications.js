@@ -14,7 +14,7 @@ const Applications = () => {
       const response = await axios.post('http://127.0.0.1:5000/applications', {
         username,
       });
-      if (response.data.status != 200) {
+      if (response.data.status !== 200) {
         console.log('applications failed');
         console.log(response);
         return false;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './profile.css';
-
+import ProfileComponent from './ProfileComponent';
 const Profile = () => {
 
   const baseURL = 'http://localhost:5000'; // Replace with your backend URL
@@ -46,19 +46,19 @@ const Profile = () => {
     let attribute_changed = "";
     let attr_value;
     console.log("changed field: ", field);
-    if(field == "phone"){
+    if(field === "phone"){
       attribute_changed = "phone";
       attr_value = values.phone;
     }
-    if(field == "email"){
+    if(field === "email"){
       attribute_changed = "email";
       attr_value = values.email;
     }
-    if(field == "name"){
+    if(field === "name"){
       attribute_changed = "name";
       attr_value = values.name;
     }
-    if(field == "address"){
+    if(field === "address"){
       attribute_changed = "address";
       attr_value = values.address;
     }
@@ -69,7 +69,7 @@ const Profile = () => {
       attribute_changed: attribute_changed,
       new_attr_value: attr_value
     }).then(response => {
-      if(response.status == 200){
+      if(response.status === 200){
         console.log("Backend fulfilled our request to update profile.");
       }
       else{
@@ -128,7 +128,7 @@ const renderField = (field) => {
         <h1>Welcome {localStorage.getItem('username')}</h1>
         <nav>
             <ul>
-                <li><a href="/Home">Home</a></li>
+                <li><a href="/"></a></li>
                 <li><a href="/applications">My Applications</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/logout" className="logout-button">Logout</a></li>
@@ -145,37 +145,8 @@ const renderField = (field) => {
             {renderField('address')}
           </div>
         </section>
-
-        <section className='education'>
-          <h2>Education</h2>
-            <ul>
-              <li>
-                <h3>Software Engineer</h3>
-                <p>Company A</p>
-                <p>Status: Pending</p>
-              </li>
-              <li>
-                <h3>Web Developer</h3>
-                <p>Company B</p>
-                <p>Status: Approved</p>
-              </li>
-            </ul>
-        </section>
-        <section className='education'>
-          <h2>Work Experience</h2>
-            <ul>
-              <li>
-                <h3>Software Engineer</h3>
-                <p>Company A</p>
-                <p>Status: Pending</p>
-              </li>
-              <li>
-                <h3>Web Developer</h3>
-                <p>Company B</p>
-                <p>Status: Approved</p>
-              </li>
-            </ul>
-        </section>
+        <ProfileComponent/>
+      
       </main>
     </div>
   );
