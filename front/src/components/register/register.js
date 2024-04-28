@@ -21,6 +21,17 @@ const Register = () => {
         }
     }, [navigate]);
 
+    const [isCompany, setIsChecked] = useState(false); // Initial state (unchecked)
+
+    const handleChange = (event) => {
+        setIsChecked(event.target.checked);
+        let checked = "false";
+        if(event.target.checked){
+            checked = "true";
+        }
+        console.log("Checkbox is ", checked);
+    };
+
     const handleRegister = async (event) => {
         event.preventDefault(); 
         if (password !== confirmPassword) {
@@ -35,7 +46,9 @@ const Register = () => {
                 name,
                 email,
                 phone,
-                address            });
+                address,
+                isCompany
+            });
 
             if (response.data.status === 401) {
                 console.error('Registration failed');
@@ -46,10 +59,12 @@ const Register = () => {
                 setUsername('');
                 setPassword('');
                 setConfirmPassword('');
+                setIsChecked(false);
 
             } else {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('username', username);
+                localStorage.setItem('isCompany', isCompany );
                 navigate('/'); 
             }
         } catch (error) {
@@ -82,7 +97,7 @@ const Register = () => {
 
                     <label for="username">Username:</label>
                     <input type="text" placeholder="Enter your username" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                </div>
+                </div> 
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" placeholder="Enter your password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
@@ -92,6 +107,7 @@ const Register = () => {
                     <input type="password" placeholder="Confirm password" id="confirm-password" name="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
 
                 </div>
+                Check this if you are a company:<input type="checkbox" checked={isCompany} onChange={handleChange}></input>
                 <button type="register">Register</button>
             </form>
         </div>

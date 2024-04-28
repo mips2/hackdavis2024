@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../header';
 import Login from '../login/Login';
+import CompanyPage from '../company/company';
 import './home.css';
 
 import { useNavigate } from 'react-router-dom';
@@ -123,26 +124,36 @@ const Home = ({ jobs }) => {
   const handleLocationChange = (term) => {
     setLocationTerm(term);
   };
-return (
-  <div>
-    <Header></Header>
-    <div className="app">
-      <main className="main-content">
-        <SearchBar onSearchChange={handleSearchChange} onLocationChange={handleLocationChange} />
-        <div className="filters">
-          <FilterButton onClick={() => toggleFilter('fullTime')}>Full-Time</FilterButton>
-          <FilterButton onClick={() => toggleFilter('partTime')} >Part-Time</FilterButton>
-          <FilterButton onClick={() => toggleFilter('softwareEngineering')}>Software Engineering</FilterButton>
-          <FilterButton onClick={() => toggleFilter('computerScience')}>Computer Science</FilterButton>
-          <FilterButton>Filters - 4</FilterButton>
+  if (localStorage.getItem('isCompany') === 'false'){
+    return (
+      <div>
+        <Header></Header>
+        <div className="app">
+          <main className="main-content">
+            <SearchBar onSearchChange={handleSearchChange} onLocationChange={handleLocationChange} />
+            <div className="filters">
+              <FilterButton onClick={() => toggleFilter('fullTime')}>Full-Time</FilterButton>
+              <FilterButton onClick={() => toggleFilter('partTime')} >Part-Time</FilterButton>
+              <FilterButton onClick={() => toggleFilter('softwareEngineering')}>Software Engineering</FilterButton>
+              <FilterButton onClick={() => toggleFilter('computerScience')}>Computer Science</FilterButton>
+              <FilterButton>Filters - 4</FilterButton>
+            </div>
+            {displayedJobs.map((job) => (
+              <JobCard key={job._id.$oid} job={job} />
+            ))}
+          </main>
         </div>
-        {displayedJobs.map((job) => (
-          <JobCard key={job._id.$oid} job={job} />
-        ))}
-      </main>
-    </div>
-  </div>
-)
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <CompanyPage></CompanyPage>
+      </div>
+    )
+  }
+
 }
 
 export default Home;

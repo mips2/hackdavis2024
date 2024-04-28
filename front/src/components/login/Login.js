@@ -20,7 +20,6 @@ const Login = ({onLogin,isLoggedIn}) => {
         const result = await onLogin(username, password);
         if (result === true) {
           console.log('login successful');
-          
           navigate('/');
         }
       };

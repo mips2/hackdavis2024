@@ -1,5 +1,5 @@
 from flask import Flask, send_from_directory,session,request,jsonify
-import os
+import os, random
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson.json_util import dumps
@@ -32,8 +32,9 @@ def login():
         # Authentication successful, set session
         session['logged_in'] = True
         session['username'] = username
+        isCompany = user['isCompany']
         print("Success")
-        return dict(status=200, message='Logged in successfully', user = username)
+        return dict(status=200, message='Logged in successfully', user = username, isCompany = isCompany)
         
     else:
         print("Failed")
@@ -124,7 +125,17 @@ def test1():
     return dict(status = 200, number = 99,data=data)
 
 
+@app.route('/get_apps', methods=['GET','POST'])
+def get_apps():
+    company_name = request.json.get('companyName')
+    print("TODO: retrive list of applications for ", company_name)
+    jobs = db['Jobs']
+    query = {"company": company_name}
+    documents = jobs.find(query)
+    print(documents)
 
+
+    return dict(status = 200)
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
@@ -177,6 +188,7 @@ def register():
     data = request.json
     username = data.get('username')#request.form['username']
     password = data.get('password')
+    isCompany = data.get('isCompany')
     name = data.get('name')
     email = data.get('email')
     phone = data.get('phone')
@@ -196,6 +208,7 @@ def register():
             "email": email,
             "phone": phone,
             "address": address,
+            "isCompany": isCompany,
             "apps": 2,
             "data": []
 }
