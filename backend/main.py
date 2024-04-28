@@ -124,7 +124,17 @@ def test1():
     return dict(status = 200, number = 99,data=data)
 
 
+@app.route('/get_apps', methods=['GET','POST'])
+def get_apps():
+    company_name = request.json.get('companyName')
+    print("TODO: retrive list of applications for ", company_name)
+    jobs = db['Jobs']
+    query = {"company": company_name}
+    documents = jobs.find(query)
+    print(documents)
 
+
+    return dict(status = 200)
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
