@@ -172,6 +172,7 @@ def register():
     data = request.json
     username = data.get('username')#request.form['username']
     password = data.get('password')
+    isCompany = data.get('isCompany')
     name = data.get('name')
     email = data.get('email')
     phone = data.get('phone')
@@ -191,6 +192,7 @@ def register():
             "email": email,
             "phone": phone,
             "address": address,
+            "isCompany": isCompany,
             "data": []
 }
         results = users_collection.insert_one(document)
