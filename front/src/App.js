@@ -14,12 +14,15 @@ function App() {
   console.log("logged in: " + localStorage.getItem('isLoggedIn'));
   const [data, setData] = useState(null);  // State to store response data
   const [isLoggedIn, setLogin] = useState(false);
+  const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://127.0.0.1:5000/');  // Replace with your backend URL
-        setData(response.data.number);  // Access correct property from response data
-        console.log('Data:', response.data); // Log the data to the console
+        setData(response.data.number);  // Acc  ess correct property from response data
+        const parsedJson = JSON.parse(response.data.data);
+        console.log(parsedJson); // Log the data to the console
+        setJobs(parsedJson);
       } catch (error) {
         console.error('Error:', error);
       }
@@ -55,7 +58,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home jobs={jobs}/>} />
       <Route path="/applications" element={<Applications/>}/>
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/logout" element={<Logout />} />
