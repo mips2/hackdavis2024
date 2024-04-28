@@ -1,7 +1,5 @@
 .navigation {
     display: flex;
-    gap: 20px;
-    margin: auto 0;
     align-items: center;
     justify-content: center;
 }
@@ -10,6 +8,8 @@
     text-decoration: none;
     color: white;
     padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .navigation a.active {
@@ -24,18 +24,18 @@
     align-items: center;
 }
 
-.nav-link {
+.nav-link a {
     text-decoration: none;
     color: white;
     align-items: center;
     padding-right: 40px;
 }
 
-.nav-link2 {
+.nav-link2 a {
     text-decoration: none;
     color: white;
     align-items: center;
-    padding-right: 80px;
+    font-size: 20px;
 }
 
 .header {
@@ -54,7 +54,7 @@
 
 .jobs-applied {
     color: #fff500;
-    font: 16px Arial, sans-serif;
+    font: 18px Arial, sans-serif;
 }
 
 .refresh-time {
@@ -67,5 +67,6 @@
     height: 40px;
     width: auto;
     padding-top: 6px;
-    padding-left: 50px;
+    padding-left: 60px;
+    padding-right: 0;
 }
