@@ -10,6 +10,7 @@ import Logout from './components/logout/Logout';
 import Register from './components/register/register';
 import Application from './components/application/Application';
 import ProfileUpdate from './components/profile/ProfileUpdate';
+
 function App() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
