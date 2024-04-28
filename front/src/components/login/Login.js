@@ -1,26 +1,28 @@
 import React from 'react'
 import './login.css'
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import Header from '../header'
-import './login.css'
+import Header from '../header';
 import axios from 'axios';
-import { useState } from 'react';
-
-const Login = ({onLogin}) => {
-
+import { useEffect } from 'react';
+const Login = ({onLogin,isLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const isLoggedIn1 = localStorage.getItem('isLoggedIn') === 'true';
+        if (isLoggedIn1) {
+            navigate('/');  // Redirects to the home page if the user is already logged in
+        }
+    }, [isLoggedIn, navigate]);  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await onLogin(username, password);
         if (result === true) {
           console.log('login successful');
+          
           navigate('/');
         }
       };

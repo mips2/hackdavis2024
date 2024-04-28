@@ -20,7 +20,7 @@ def login():
 
     print(username, password)
     user = users_collection.find_one({'username': username})
-
+    print("got this far")
     if user and user['password'] == password:
         # Authentication successful, set session
         session['logged_in'] = True
