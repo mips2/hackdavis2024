@@ -19,12 +19,12 @@ const Profile = () => {
   });
 
   // State for the values of different fields
-  const [values, setValues] = useState({
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '+1234567890',
-    address: '123 Main St, City, Country',
-  });
+    const [values, setValues] = useState({
+      name: localStorage.getItem('username'),
+      email: 'johndoe@example.com',
+      phone: '+1234567890',
+      address: '123 Main St, City, Country',
+    });
 
   // State for storing original values before editing
   const [originalValues, setOriginalValues] = useState({});
@@ -125,7 +125,7 @@ const renderField = (field) => {
   return (
     <div className="ProfilePage">
       <header>
-        <h1>Welcome, John Doe</h1>
+        <h1>Welcome {localStorage.getItem('username')}</h1>
         <nav>
             <ul>
                 <li><a href="/Home">Home</a></li>

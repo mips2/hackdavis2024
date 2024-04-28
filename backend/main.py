@@ -26,7 +26,7 @@ def login():
         session['logged_in'] = True
         session['username'] = username
         print("Success")
-        return dict(status=200, message='Logged in successfully')
+        return dict(status=200, message='Logged in successfully', user = username)
         
     else:
         print("Failed")
@@ -41,6 +41,12 @@ def update_profile():
     # TODO
     # database interactions
     return dict(status = 200)
+
+@app.route('/profile')
+def get_profile():
+    return 0
+
+
 
 
 @app.route('/')
