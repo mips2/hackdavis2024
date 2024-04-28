@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import axios from 'axios';
+import React, { useState } from 'react';
+import './ProfileUpdate.css';
 
 const ProfileUpdate = () => {
   const [education, setEducation] = useState({
@@ -28,6 +29,7 @@ const ProfileUpdate = () => {
     e.preventDefault();
     console.log('Submitting Education:', education);
     updateProfile("Education",education);
+      
   };
 
   const submitWorkExperience = (e) => {
@@ -65,27 +67,27 @@ const ProfileUpdate = () => {
     }
   };
   return (
-    <div>
+    <div className="body">
       <form onSubmit={submitEducation}>
         <h2>Education</h2>
-        <input type="text" name="School" placeholder="School" value={education.school} onChange={handleEducationChange} />
-        <input type="text" name="StartYear" placeholder="Start Year" value={education.startYear} onChange={handleEducationChange} />
-        <input type="text" name="EndYear" placeholder="End Year" value={education.endYear} onChange={handleEducationChange} />
-        <button type="submit">Submit Education</button>
+        <input className="edu" type="text" name="School" placeholder="School" value={education.school} onChange={handleEducationChange} />
+        <input className="edu" type="text" name="StartYear" placeholder="Start Year" value={education.startYear} onChange={handleEducationChange} />
+        <input className="edu" type="text" name="EndYear" placeholder="End Year" value={education.endYear} onChange={handleEducationChange} />
+        <button className="button2" type="submit">Submit Education</button>
       </form>
 
       <form onSubmit={submitWorkExperience}>
         <h2>Work Experience</h2>
-        <input type="text" name="Company" placeholder="Company" value={workExperience.company} onChange={handleWorkExperienceChange} />
-        <input type="text" name="StartYear" placeholder="Start Year" value={workExperience.position} onChange={handleWorkExperienceChange} />
-        <input type="text" name="EndYear" placeholder="End Year" value={workExperience.years} onChange={handleWorkExperienceChange} />
-        <button type="submit">Submit Work Experience</button>
+        <input className="work" type="text" name="Company" placeholder="Company" value={workExperience.company} onChange={handleWorkExperienceChange} />
+        <input className="work" type="text" name="StartYear" placeholder="Start Year" value={workExperience.position} onChange={handleWorkExperienceChange} />
+        <input className="work" type="text" name="EndYear" placeholder="End Year" value={workExperience.years} onChange={handleWorkExperienceChange} />
+        <button className="button2" type="submit">Submit Work Experience</button>
       </form>
 
-\      <form onSubmit={submitSkill}>
+      <form onSubmit={submitSkill}>
         <h2>Skills</h2>
-        <input type="text" value={skill} onChange={(e) => setSkill(e.target.value)} placeholder="Skill" />
-        <button type="submit">Submit Skill</button>
+        <input className="skill" type="text" value={skill} onChange={(e) => setSkill(e.target.value)} placeholder="Skill" />
+        <button className="button2" type="submit">Submit Skill</button>
       </form>
     </div>
   );

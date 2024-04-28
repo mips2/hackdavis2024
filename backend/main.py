@@ -1,9 +1,14 @@
 from flask import Flask, send_from_directory,session,request,jsonify
-import os
+import os, random
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson.json_util import dumps
 from bson import ObjectId, json_util
+import schedule
+import time
+from datetime import datetime
+import pytz
+
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -27,8 +32,9 @@ def login():
         # Authentication successful, set session
         session['logged_in'] = True
         session['username'] = username
+        isCompany = user['isCompany']
         print("Success")
-        return dict(status=200, message='Logged in successfully', user = username)
+        return dict(status=200, message='Logged in successfully', user = username, isCompany = isCompany)
         
     else:
         print("Failed")
@@ -101,6 +107,7 @@ def profile_update():
 
 @app.route('/',methods=['GET'])
 def index():
+    should_reset()
     documents = jobs_collection.find()
     json_data = dumps(documents)
     print(json_data)
@@ -118,7 +125,17 @@ def test1():
     return dict(status = 200, number = 99,data=data)
 
 
+@app.route('/get_apps', methods=['GET','POST'])
+def get_apps():
+    company_name = request.json.get('companyName')
+    print("TODO: retrive list of applications for ", company_name)
+    jobs = db['Jobs']
+    query = {"company": company_name}
+    documents = jobs.find(query)
+    print(documents)
 
+
+    return dict(status = 200)
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
@@ -171,6 +188,7 @@ def register():
     data = request.json
     username = data.get('username')#request.form['username']
     password = data.get('password')
+    isCompany = data.get('isCompany')
     name = data.get('name')
     email = data.get('email')
     phone = data.get('phone')
@@ -190,12 +208,44 @@ def register():
             "email": email,
             "phone": phone,
             "address": address,
+            "isCompany": isCompany,
+            "apps": 2,
             "data": []
 }
         results = users_collection.insert_one(document)
         return dict(status = 200, number = 99,message="test")
     
-
-
+@app.route('/profile1', methods=['GET', 'POST'])
+def profileData():
+    data = request.json
+    user = data.get('username')
+    user = users_collection.find_one({'username': user})
+    if user:
+        return json_util.dumps({
+            "status": 200,
+            "data": user
+        })
+    else:
+        return json_util.dumps({
+            "status": 401,
+            "message": "No user found with that username"
+        })
+    
+def reset_apps_value():
+    # Access the collection where user profiles are stored
+    result = users_collection.update_many(
+        {},  # This empty query matches all documents
+        {"$set": {"apps": 3}}  # Set 'apps' to 2 for all matched documents
+        print("changing apps value")
+    )
+    print(f"Apps value reset for {result.modified_count} users at {datetime.now(pytz.timezone('US/Pacific'))}")
+def should_reset():
+    # Check if today is Sunday and current time is around midnight PST
+    print("Checking if its sunday")
+    now = datetime.now(pytz.timezone('US/Pacific'))
+    if now.weekday() == 6 and now.hour == 0:  # 6 == Sunday, 0 == midnight
+        reset_apps_value()
 if __name__ == '__main__':
-    app.run(debug=True)
+    reset_apps_value()
+    # Running the Flask app
+    app.run(debug=True, use_reloader=False) 

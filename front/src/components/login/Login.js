@@ -1,12 +1,12 @@
-import React from 'react'
-import './login.css'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Home from '../home/Home';
+import './login.css';
 const Login = ({onLogin,isLoggedIn}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
 
@@ -20,7 +20,6 @@ const Login = ({onLogin,isLoggedIn}) => {
         const result = await onLogin(username, password);
         if (result === true) {
           console.log('login successful');
-          
           navigate('/');
         }
       };
@@ -42,7 +41,12 @@ const Login = ({onLogin,isLoggedIn}) => {
           </div>
           <div class="form-group">
               <label class="password">Password:</label>
-              <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <input type={showPassword ? 'text' : 'password'} placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <div class="showpw-container">
+                <button class="showpw" type="button" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? 'Hide Password' : 'Show Password'}
+            </button>
+            </div>
           </div>
           <button type="submit">Log In</button>
           <button type="register" onClick={handleRegister}>Create New Account</button>
@@ -51,7 +55,7 @@ const Login = ({onLogin,isLoggedIn}) => {
 
 
   </div>
-  )
-}
+  );
+};
 
 export default Login
