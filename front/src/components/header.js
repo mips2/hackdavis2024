@@ -19,7 +19,9 @@ const Header = () => {
 
   // Function to handle tab click
   const handleTabClick = (tabName) => {
-    setCurrentTab(tabName);
+    if (tabName !== "Profile") {
+      setCurrentTab(tabName);
+    }
   };
 
   return (
@@ -29,12 +31,9 @@ const Header = () => {
           <a href="/" className={`nav-link ${currentTab === "Home" ? "active" : ""}`} onClick={() => handleTabClick("Home")}>
             Home
           </a>
-          <a href="/applications" className={`nav-link2 ${currentTab === "My Applications" ? "active" : ""}`} onClick={() => handleTabClick("My Applications")}>
+          <a href="/applications" className={`nav-link ${currentTab === "My Applications" ? "active" : ""}`} onClick={() => handleTabClick("My Applications")}>
             My Applications
           </a>
-          <p className="jobs-applied"># of jobs applied: 3</p>
-          <p className="applications-left"># of applications left: 5</p>
-          <p className="refresh-time">Refreshing in: 5 days</p>
           <a href="/profile" className={`nav-link ${currentTab === "Profile" ? "active" : ""}`} onClick={() => handleTabClick("Profile")}>
             <img src={accountCircleImg} alt="User avatar" className="user-avatar" />
           </a>

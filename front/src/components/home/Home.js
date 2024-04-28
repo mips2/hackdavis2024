@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
-import { useState,useEffect} from 'react';
 
 const JobCard = ({ job }) => (
 <div className ="job-card-container">

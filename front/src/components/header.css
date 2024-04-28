@@ -1,72 +1,51 @@
+.header {
+    border-radius: 70px;
+    background-color: #305bf4;
+    align-self: stretch;
+    display: flex;
+    gap: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px; /* Adjusted padding to create space from the sides */
+    margin-top: 20px; /* Added margin to create space from the top */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .navigation {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 11px;
+    flex-grow: 1;
+    justify-content: space-between; 
+    margin: 0;
 }
+
 .navigation a{
-    font-size: 30px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+    margin-right: 50px;
+    margin-left: 50px;
     text-decoration: none;
-    color: white;
-    padding-right: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    
 }
 
 .navigation a.active {
     color: black; /* Change the color of active link */
-}
-
-.navigation p{
-    font-size: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-radius: 70px;
+    background-color: #f5e4ea;
+    color: #000;
+    white-space: nowrap;
     justify-content: center;
-    align-items: center;
+    padding: 10px 24px;
 }
 
-.nav-link a {
-    text-decoration: none;
-    color: white;
-    align-items: center;
-    padding-right: 40px;
-}
-
-.nav-link2 a {
-    text-decoration: none;
-    color: white;
-    align-items: center;
-    font-size: 20px;
-}
-
-.header {
-    justify-content: center;
-    align-items: center;
-    background-color: #007bff;
-    display: flex;
-    width: 100%;
-    font-size: 40px;
-}
-
-.applications-left {
-    color: #fff500;
-    font-family: Arial, sans-serif;
-}
-
-.jobs-applied {
-    color: #fff500;
-    font: 18px Arial, sans-serif;
-}
-
-.refresh-time {
-    color: #e3e3e3;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-}
-
-.user-avatar {
-    height: 40px;
-    width: auto;
-    padding-top: 6px;
-    padding-left: 60px;
-    padding-right: 0;
+.navigation a img {
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 650px;
 }
