@@ -16,6 +16,8 @@ client = MongoClient('mongodb+srv://root:admin@cluster.v5xklt0.mongodb.net/')
 db = client['App']
 users_collection = db['Users']
 jobs_collection = db['Jobs']
+applications_collection = db['applications']  # This line defines the 'applications' collection
+
 
 app.secret_key = 'your_secret_key'
 
@@ -154,6 +156,7 @@ def get_apps():
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
+    print("yo")
     data = request.json
     user = db.Users.find_one({"username": data.get('username')}, {"_id": 1})
 
@@ -260,6 +263,24 @@ def should_reset():
     now = datetime.now(pytz.timezone('US/Pacific'))
     if now.weekday() == 6 and now.hour == 0:  # 6 == Sunday, 0 == midnight
         reset_apps_value()
+
+from werkzeug.utils import secure_filename
+
+@app.route('/submit_application', methods=['POST'])
+def submit_application():
+    # Directly parse the non-file form data
+    data = request.form.to_dict()
+
+    # Assuming the 'applications' collection is where you want to store the form data
+    applications_collection = db['applications']
+    application_id = applications_collection.insert_one(data).inserted_id
+
+    return jsonify(status=200, message='Application submitted successfully', applicationId=str(application_id))
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'pdf', 'doc', 'docx'}
+
 if __name__ == '__main__':
     reset_apps_value()
     # Running the Flask app
