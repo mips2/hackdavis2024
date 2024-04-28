@@ -35,7 +35,7 @@
 
 .login-form {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
@@ -44,8 +44,9 @@
 
 .form-group {
     margin-bottom: 15px;
-    padding-right: 20px;
+    padding-right: 0px;
     justify-content: center;
+    align-items: center;
 
 }
 
@@ -55,7 +56,7 @@
 }
 
 .form-group input {
-    width: 100%;
+    max-width: 95%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -106,10 +107,11 @@ button[type="register"]:hover {
 }
 .showpw-container{
     display: flex;
-    justify-content: end;
+    justify-content: right; 
+    margin-right:0;
 }
 .showpw {
-    width: 50%;
+    width: 45%;
     height: 30px;
     font-size: 10px;
     justify-content: center;

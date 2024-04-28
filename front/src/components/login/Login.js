@@ -44,10 +44,10 @@ const Login = ({onLogin,isLoggedIn}) => {
               <input type={showPassword ? 'text' : 'password'} placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               <div class="showpw-container">
                 <button class="showpw" type="button" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? 'Hide Password' : 'Show Password'}
-            </button>
+                  {showPassword ? 'Hide Password' : 'Show Password'}
+                </button>
+              </div>
             </div>
-          </div>
           <button type="submit">Log In</button>
           <button type="register" onClick={handleRegister}>Create New Account</button>
         </form>

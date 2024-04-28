@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CompanyPage from '../company/company';
 import Header from '../header';
 import Login from '../login/Login';
-import CompanyPage from '../company/company';
 import './home.css';
 const JobCard = ({ job }) => {
 
