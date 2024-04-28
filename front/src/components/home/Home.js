@@ -16,7 +16,6 @@ return (
   <div className="job-details">
     <div className="job-header">
       <h3 className="job-title">{job.title}</h3>
-      <button className="quick-apply-btn" onClick={() => navigate('./applypage')}>Quick Apply</button>
     </div>
     <div className="job-meta">
       <p className="company-location">
@@ -26,6 +25,9 @@ return (
       </p>
     </div>
   </div>
+  <section className="quickcont">
+    <button className="quick-apply-btn" onClick={() => navigate('./applypage')}>Quick Apply</button>
+  </section>
 </article>
 </div>
 );

@@ -24,17 +24,17 @@ const Header = () => {
   };
 
   return (
-      <header>
-        <h1>Welcome {localStorage.getItem('username')}!</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/applications">My Applications</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout" className="logout-button">Logout</a></li>
-            </ul>
-        </nav>
-      </header>
+    <header>
+      <h1>Welcome {localStorage.getItem('username')}!</h1>
+      <nav>
+        <ul>
+          <li className={currentTab === "Home" ? "active" : ""}><a href="/">Home</a></li>
+          <li className={currentTab === "My Applications" ? "active" : ""}><a href="/applications">My Applications</a></li>
+          <li className={currentTab === "Profile" ? "active" : ""}><a href="/profile">Profile</a></li>
+          <li><a href="/logout" className="logout-button">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
