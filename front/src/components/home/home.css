@@ -1,6 +1,8 @@
 .job-card-container {
     display: flex;
     align-items: center; /* Vertically center the job card */
+    justify-content: center;
+    flex-direction: column;
 }
 
 .job-card {
@@ -12,13 +14,13 @@
     padding: 18px 30px;
     display: flex;
     gap: 40px;
+    justify-content: space-between;
 }
 
 .company-logo {
     flex: 0 0 22%; /* Added flex properties to control width */
     display: flex; /* Make it a flex container */
     justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
     margin-right: 2%;
     margin-left: 2%;
 }
@@ -35,59 +37,40 @@
     flex-direction: column;
     color: #000;
     font-weight: 400;
-    justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 0;
+    padding: 0
 }
 
 .job-header {
     display: flex;
-    margin-top: 10px;
     justify-content: space-between; /* Align items at the start and end */
     align-items: center; /* Vertically center items */
 }
 
 .job-title {
-    margin: auto 0;
+    padding: 0;
+    margin: 0;
     font: 32px Arial, sans-serif;
-}
-.buttoncont {
-    display: flex;
-    flex-direction: column; /* Align items vertically */
-    justify-content: space-between; /* Space items evenly */
-    height: 80%; /* Adjust height as needed */
-    width: 50%; /* Adjust width as needed */
-    align-items: center;
-}
-
-.quick-apply-btn,
-.external-apply-btn {
-    border-radius: 10px;
-    font: 30px Arial, sans-serif;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    width: 280px;
-    height: 60px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .quick-apply-btn {
-    background-color: #99baec;
-    padding: 12px 0px;
-    margin-bottom: 10px;
-}
-
-.external-apply-btn {
-    background-color: #acacac;
-    padding: 12px 0px;
+    border-radius: 10px;
+    font-size: 24px; /* Changed font-size */
+    border: none;
+    color: #000;
+    cursor: pointer;
+    width: 40%;
+    height: 60px;
+    text-align: center;
+    background-color: #ff9770;
+    margin: auto 0;
+    margin-top: 50px;
+    padding: 16px 60px;
 }
 
 .job-meta {
     display: flex;
-    margin-top: 10px;
-    gap: 109px;
+    gap: 10px;
 }
 
 .company-location {
@@ -156,7 +139,7 @@
     background-color: transparent;
     font-family: Arial, sans-serif;
     font-size: 30px;
-    color: #fff;
+    color: #000000;
 }
 
 .filters {
@@ -173,7 +156,7 @@
 .filter-btn {
     font-family: Arial, sans-serif;
     border-radius: 20px;
-    background-color: #495af9;
+    background-color: 	#79addc;
     white-space: nowrap;
     justify-content: center;
     padding: 12px 25px;
