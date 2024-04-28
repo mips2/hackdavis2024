@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../header';
 import Login from '../login/Login';
+import CompanyPage from '../company/company';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
 import JobCard from './JobCard'; // Assuming JobCard is in the same directory
@@ -145,7 +146,7 @@ const Home = ({ jobs }) => {
   else{
     return(
       <div>
-        <h1>You are on a company page because you are company account.</h1>
+        <CompanyPage></CompanyPage>
       </div>
     )
   }
