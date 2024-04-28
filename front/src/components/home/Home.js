@@ -1,15 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
-import { useState,useEffect} from 'react';
-import Application from '../application/Application';
-import { useNavigate } from 'react-router-dom';
 
-const JobCard = ({ job }) => {
-  
-  const navigate = useNavigate();
-return(
+const JobCard = ({ job }) => (
 <div className ="job-card-container">
 <article className="job-card">
   <div className="company-logo">
@@ -18,9 +12,7 @@ return(
   <div className="job-details">
     <div className="job-header">
       <h3 className="job-title">{job.title}</h3>
-      <div className="buttoncont">
-      <button className="quick-apply-btn" onClick={() => navigate(`/application/${job._id.$oid}`)}>Quick Apply</button>
-      </div>
+      <button className="quick-apply-btn">Quick Apply</button>
     </div>
     <div className="job-meta">
       <p className="company-location">
@@ -28,15 +20,12 @@ return(
         <br />
         {job.location}
       </p>
-      <div className="buttoncont">
-      <button className="external-apply-btn">Apply Externally</button>
-      </div>
     </div>
   </div>
 </article>
 </div>
 );
-}
+
 const SearchBar = ({ onSearchChange,onLocationChange }) => (
 <div className="search-bar">
   <div className="search-input">
