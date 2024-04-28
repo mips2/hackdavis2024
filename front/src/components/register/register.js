@@ -39,6 +39,19 @@ const Register = ({onLogin,isLoggedIn}) => {
                     <input type="text" placeholder="Enter your name" id="name" name="name" required />
                 </div>
                 <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" placeholder="Enter your email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">Phone Number:</label>
+                    <input type="text" placeholder="Enter your phone number" id="phone-number" name="phone-number" required />
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" placeholder="Enter your address" id="address" name="address" required />
+                </div>
+                <div class="form-group">
+
                     <label for="username">Username:</label>
                     <input type="text" placeholder="Enter your username" id="username" name="username" required />
                 </div>
@@ -48,7 +61,8 @@ const Register = ({onLogin,isLoggedIn}) => {
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" placeholder="Enter your password" id="confirm-password" name="confirm-password" required />
+                    <input type="password" placeholder="Confirm password" id="confirm-password" name="confirm-password" required />
+
                 </div>
                 <button type="submit">Register</button>
             </form>
