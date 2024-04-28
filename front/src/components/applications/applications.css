@@ -1,0 +1,82 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+.logout-button {
+    /* Style the logout link to resemble a button */
+    display: inline-block;
+    padding: 0.5em 1em; /* Adjust padding as needed */
+    background-color: #ff3d3d; /* Adjust background color */
+    color: #333; /* Adjust text color */
+    text-decoration: none; /* Remove underline */
+    border: 1px solid #ff3d3d; /* Add border */
+    border-radius: 4px; /* Add rounded corners */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    transition: background-color 0.2s ease-in-out; /* Optional: Smooth hover effect */
+  }
+  
+  .logout-button:hover {
+    background-color: #ff2626; /* Adjust hover background color */
+  }
+
+  /* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container ul {
+    list-style-type: none;
+}
+
+.container ul li {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-bottom: 40px;
+    
+}
+
+.container h2 {
+    margin-bottom: 10px;
+}

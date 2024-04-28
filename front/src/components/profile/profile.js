@@ -50,32 +50,35 @@ const Profile = () => {
     }
   };
 
-  // Render input field or plain text based on edit mode
-  const renderField = (field) => {
-    if (editMode[field]) {
-      return (
-        <div>
-          <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
-          <input
-            id={field}
-            value={values[field]}
-            onChange={(e) => handleChange(field, e.target.value)}
-            onKeyDown={(e) => handleKeyPress(e, field)}
-            autoFocus
-          />
-          <button onClick={() => saveChanges(field)}>Save</button>
-          <button onClick={() => cancelChanges(field)}>Cancel</button>
+  // Function to render input field or plain text based on edit mode
+const renderField = (field) => {
+  if (editMode[field]) {
+    return (
+      <div>
+        <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+        <input
+          id={field}
+          value={values[field]}
+          onChange={(e) => handleChange(field, e.target.value)}
+          onKeyDown={(e) => handleKeyPress(e, field)}
+          autoFocus
+        />
+        <div className="button-container">
+          <button className="save-button" onClick={() => saveChanges(field)}>Save</button>
+          <button className="cancel-button" onClick={() => cancelChanges(field)}>Cancel</button>
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
-          <p>{values[field]} <button onClick={() => toggleEditMode(field)}>Edit</button></p>
-        </div>
-      );
-    }
-  };
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+        <p>{values[field]} <button onClick={() => toggleEditMode(field)}>Edit</button></p>
+      </div>
+    );
+  }
+};
+
 
   return (
     <div className="ProfilePage">
@@ -83,9 +86,9 @@ const Profile = () => {
         <h1>Welcome, John Doe</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Jobs</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/Home">Home</a></li>
+                <li><a href="/applications">My Applications</a></li>
+                <li><a href="/profile">Profile</a></li>
                 <li><a href="/logout" className="logout-button">Logout</a></li>
             </ul>
         </nav>
@@ -100,21 +103,36 @@ const Profile = () => {
             {renderField('address')}
           </div>
         </section>
-        <section className="job-applications">
-          <h2>Job Applications</h2>
-          <ul>
-            <li>
-              <h3>Software Engineer</h3>
-              <p>Company A</p>
-              <p>Status: Pending</p>
-            </li>
-            <li>
-              <h3>Web Developer</h3>
-              <p>Company B</p>
-              <p>Status: Approved</p>
-            </li>
-            {/* Add more job applications as needed */}
-          </ul>
+
+        <section className='education'>
+          <h2>Education</h2>
+            <ul>
+              <li>
+                <h3>Software Engineer</h3>
+                <p>Company A</p>
+                <p>Status: Pending</p>
+              </li>
+              <li>
+                <h3>Web Developer</h3>
+                <p>Company B</p>
+                <p>Status: Approved</p>
+              </li>
+            </ul>
+        </section>
+        <section className='education'>
+          <h2>Work Experience</h2>
+            <ul>
+              <li>
+                <h3>Software Engineer</h3>
+                <p>Company A</p>
+                <p>Status: Pending</p>
+              </li>
+              <li>
+                <h3>Web Developer</h3>
+                <p>Company B</p>
+                <p>Status: Approved</p>
+              </li>
+            </ul>
         </section>
       </main>
     </div>

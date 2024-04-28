@@ -1,31 +1,8 @@
-.logout-button {
-    /* Style the logout link to resemble a button */
-    display: inline-block;
-    padding: 0.5em 1em; /* Adjust padding as needed */
-    background-color: #ff3d3d; /* Adjust background color */
-    color: #333; /* Adjust text color */
-    text-decoration: none; /* Remove underline */
-    border: 1px solid #ff3d3d; /* Add border */
-    border-radius: 4px; /* Add rounded corners */
-    cursor: pointer; /* Set cursor to pointer on hover */
-    transition: background-color 0.2s ease-in-out; /* Optional: Smooth hover effect */
-  }
-  
-  .logout-button:hover {
-    background-color: #ff2626; /* Adjust hover background color */
-  }
-
-  /* Reset styles */
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
 }
 
 header {
@@ -57,12 +34,14 @@ main {
 }
 
 .profile-info,
-.job-applications {
+.job-applications,
+.education {
     margin-bottom: 40px;
 }
 
 .profile-info h2,
-.job-applications h2 {
+.job-applications h2,
+.education h2 {
     margin-bottom: 10px;
 }
 
@@ -90,5 +69,34 @@ main {
     margin-bottom: 20px;
 }
 
+.education {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
 
+.education ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
+.education ul li {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+}
+
+.save-button,
+.cancel-button {
+    margin: auto;
+}
+
+.save-button {
+    margin-right: 10px;
+}
