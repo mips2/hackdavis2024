@@ -40,9 +40,9 @@ function Applications() {
       <Header></Header>
 
       <div className="num-container">
-      <p className="numjob">Number of jobs applied to: {applications.length}</p>
-      <p className="numapp">Number of applications left: {/*Assuming num applications left obj exists*/}</p>
-      <p className="refreshrate">Refreshing in: {/*Assuming refresh rate obj exists*/} days</p>
+      <p className="numjob">NUMBER OF JOBS APPLIED TO: {applications.length}</p>
+      <p className="numapp">NUMBER OF APPLICATIONS LEFT: {/*Assuming num applications left obj exists*/}</p>
+      <p className="refreshrate">REFRESHING IN: {/*Assuming refresh rate obj exists*/} days</p>
       </div>
 
       <div className ="app-card-container">
