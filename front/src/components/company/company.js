@@ -19,8 +19,6 @@ const CompanyPage = () => {
     const axiosInstance = axios.create({
         baseURL
     });
-
-    // do an axios post to backend:
     axiosInstance.post('/get_apps', {
         companyName: localStorage.getItem('username')
       }).then(response => {
@@ -31,6 +29,8 @@ const CompanyPage = () => {
           console.log("Backend responded with ", response.status)
         }
       })
+    // do an axios post to backend:
+
 
     // each logged in user can have a flag
     // company: true, or company: false

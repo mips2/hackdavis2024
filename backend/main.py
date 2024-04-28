@@ -128,14 +128,29 @@ def test1():
 @app.route('/get_apps', methods=['GET','POST'])
 def get_apps():
     company_name = request.json.get('companyName')
-    print("TODO: retrive list of applications for ", company_name)
-    jobs = db['Jobs']
+    if not company_name:
+        return jsonify(status=400, message="No company name provided")
+
+    print("Retrieving list of applications for ", company_name)
     query = {"company": company_name}
-    documents = jobs.find(query)
-    print(documents)
+    job_listings = jobs_collection.find(query)
 
+    job_details = []
+    for job in job_listings:
+        job_details.append({
+            "id": str(job['_id']),
+            "title": job.get('title'),
+            "location": job.get('location'),
+            "type": job.get('type'),
+            "category": job.get('Category')
+        })
+        print(job_details)
 
-    return dict(status = 200)
+    if job_details:
+        return jsonify(status=200, number=len(job_details), data=job_details)
+    else:
+        return jsonify(status=404, message="No job listings found for this company")
+
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
@@ -235,10 +250,10 @@ def reset_apps_value():
     # Access the collection where user profiles are stored
     result = users_collection.update_many(
         {},  # This empty query matches all documents
-        {"$set": {"apps": 3}}  # Set 'apps' to 2 for all matched documents
-        print("changing apps value")
+        {"$set": {"apps": 3}}  # Set 'apps' to 3 for all matched documents
     )
-    print(f"Apps value reset for {result.modified_count} users at {datetime.now(pytz.timezone('US/Pacific'))}")
+    print("Apps value reset for", result.modified_count, "users at", datetime.now(pytz.timezone('US/Pacific')))
+
 def should_reset():
     # Check if today is Sunday and current time is around midnight PST
     print("Checking if its sunday")
