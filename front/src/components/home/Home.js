@@ -4,41 +4,62 @@ import Header from '../header';
 import Login from '../login/Login';
 import CompanyPage from '../company/company';
 import './home.css';
+const JobCard = ({ job }) => {
 
-import { useNavigate } from 'react-router-dom';
-import JobCard from './JobCard'; // Assuming JobCard is in the same directory
-
-
-
-const SearchBar = ({ onSearchChange,onLocationChange }) => (
-  <div className="search-bar">
-    <div className="search-input">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dac0bffb10fa8b9b03590bb619ad64d0747a7bc9edb75820fe380bf14b252864?apiKey=c7598dd2036b4baf9e49409c4a6781c6&" alt="Search icon" />
-      <label htmlFor="search-jobs" className="visually-hidden">
-        Search for companies or positions
-      </label>
-      <input
-        type="text"
-        id="search-jobs"
-        placeholder="Search for companies or positions..."
-        aria-label="Search for companies or positions"
-        onChange={e => onSearchChange(e.target.value)}
-      />
+  const navigate = useNavigate();
+return (
+<div className ="job-card-container">
+<article className="job-card">
+  <div className="company-logo">
+    <img src={job.logo} alt={`${job.company} logo`} />
+  </div>
+  <div className="job-details">
+    <div className="job-header">
+      <h3 className="job-title">{job.title}</h3>
+      <button className="quick-apply-btn" onClick={() => navigate('./applypage')}>Quick Apply</button>
     </div>
-    <div className="location-input">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3aa7725667142a53b63a4754839f021dbff43134149b29eb95e1e8b6f5452fdf?apiKey=c7598dd2036b4baf9e49409c4a6781c6&" alt="Location icon" />
-      <label htmlFor="location" className="visually-hidden">
-        City, State, or Zip Code
-      </label>
-      <input
-        type="text"
-        id="location"
-        placeholder="City, State, or Zip Code"
-        aria-label="City, State, or Zip Code"
-        onChange={e => onLocationChange(e.target.value)}
-      />
+    <div className="job-meta">
+      <p className="company-location">
+        {job.company}
+        <br />
+        {job.location}
+      </p>
     </div>
   </div>
+</article>
+</div>
+);
+}
+const SearchBar = ({ onSearchChange,onLocationChange }) => (
+<div className="search-bar">
+  <div className="search-input">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dac0bffb10fa8b9b03590bb619ad64d0747a7bc9edb75820fe380bf14b252864?apiKey=c7598dd2036b4baf9e49409c4a6781c6&" alt="Search icon" />
+    <label htmlFor="search-jobs" className="visually-hidden">
+      Search for companies or positions
+    </label>
+    <input
+      type="text"
+      id="search-jobs"
+      placeholder="Search for companies or positions..."
+      aria-label="Search for companies or positions"
+      onChange={e => onSearchChange(e.target.value)}
+    />
+  </div>
+  <div className="location-input">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3aa7725667142a53b63a4754839f021dbff43134149b29eb95e1e8b6f5452fdf?apiKey=c7598dd2036b4baf9e49409c4a6781c6&" alt="Location icon" />
+    <label htmlFor="location" className="visually-hidden">
+      City, State, or Zip Code
+    </label>
+    <input
+      type="text"
+      id="location"
+      placeholder="City, State, or Zip Code"
+      aria-label="City, State, or Zip Code"
+      onChange={e => onLocationChange(e.target.value)}
+      
+    />
+  </div>
+</div>
 );
 
 const FilterButton = ({ children, onClick }) => (
@@ -46,7 +67,6 @@ const FilterButton = ({ children, onClick }) => (
     {children}
   </button>
 );
-
 const Home = ({ jobs }) => {
   console.log(jobs);
   const [displayedJobs, setDisplayedJobs] = useState(jobs);
