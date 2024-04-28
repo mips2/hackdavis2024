@@ -41,7 +41,7 @@ function Applications() {
 
       <div className="num-container">
       <p className="numjob">NUMBER OF JOBS APPLIED TO: {applications.length}</p>
-      <p className="numapp">NUMBER OF APPLICATIONS LEFT: {/*Assuming num applications left obj exists*/}</p>
+      <p className="numapp">NUMBER OF APPLICATIONS LEFT: 2 {/*Assuming num applications left obj exists*/}</p>
       <p className="refreshrate">REFRESHING IN: {/*Assuming refresh rate obj exists*/} days</p>
       </div>
 

@@ -271,6 +271,15 @@ def submit_application():
     # Directly parse the non-file form data
     data = request.form.to_dict()
 
+    print(data)
+    data['ApplicantID'] = db['Users'].find_one({'username': data['username']})['_id']
+    data["Status"] = "Pending"
+    print("")
+    print(data)
+    print("TESTING")
+    print(data['ApplicantID'])
+    data['JobID'] = ObjectId(data['JobID'])
+
     # Assuming the 'applications' collection is where you want to store the form data
     applications_collection = db['applications']
     application_id = applications_collection.insert_one(data).inserted_id

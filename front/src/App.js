@@ -70,7 +70,8 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/application/:id" element={<Application />} />
       <Route path="/profileupdate" element={<ProfileUpdate />} />
-      <Route path="/applypage" element={<Applypage />} />
+      <Route path="/applypage/:id" element={<Applypage />} />
+
     </Routes>
   );
 }
