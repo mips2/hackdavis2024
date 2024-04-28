@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import './ProfileUpdate.css';
 
 const ProfileComponent = () => {
     console.log("ProfileComponent");
@@ -33,9 +33,18 @@ useEffect(() => {
   loadProfile();
 }, []);
 console.log(profile);
+
+
+const YourComponent = ({ profile }) => {
+  // Define the handleEditClick function to navigate to profileUpdated.js
+  const handleEditClick = () => {
+    // Navigate to profileUpdated.js
+    window.location.href = './ProfileUpdate';
+  };
   return (
     <div><section className='education'>
     <h2>Education</h2>
+    <button className='button1' onClick={handleEditClick}>Edit personal information</button>
     <ul>
       {profile.Education?.map((edu, index) => (
         <li key={index}>
@@ -71,7 +80,9 @@ console.log(profile);
       ))}
     </ul>
   </section></div>
-  )
-}
+  );
+};
+return <YourComponent profile={profile} />;
+};
 
 export default ProfileComponent

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './profile.css';
+import React, { useState } from 'react';
 import ProfileComponent from './ProfileComponent';
+import './profile.css';
 const Profile = () => {
 
   const baseURL = 'http://localhost:5000'; // Replace with your backend URL
@@ -152,4 +152,5 @@ const renderField = (field) => {
   );
 }
 
-export default Profile;
+export default Profile; 
+
