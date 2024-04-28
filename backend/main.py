@@ -119,14 +119,6 @@ def index():
 
 
 
-
-@app.route('/test1',methods=['GET','POST'])
-def test1():
-    username = request.json.get('username')
-    Field =request.json.get('data')
-    return dict(status = 200, number = 99,data=data)
-
-
 @app.route('/get_apps', methods=['GET','POST'])
 def get_apps():
     company_name = request.json.get('companyName')
@@ -270,10 +262,19 @@ from werkzeug.utils import secure_filename
 def submit_application():
     # Directly parse the non-file form data
     data = request.form.to_dict()
-
+    print(data)
+    data['ApplicantID'] = db['Users'].find_one({'username': data['username']})['_id']
+    data["Status"] = "Pending"
+    print("")
+    print(data)
+    print("TESTING")
+    print(data['ApplicantID'])
+    data['JobID'] = ObjectId(data['JobID'])
     # Assuming the 'applications' collection is where you want to store the form data
     applications_collection = db['applications']
+
     application_id = applications_collection.insert_one(data).inserted_id
+
 
     return jsonify(status=200, message='Application submitted successfully', applicationId=str(application_id))
 

@@ -1,6 +1,10 @@
 import axios from 'axios';
+<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import './applypage.css';
+=======
+import { useParams } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 function InputField({ label, name, type, value, onChange, placeholder }) {
   return (
@@ -33,7 +37,10 @@ function ApplyPage() {
     phone: '',
     citizenship: '',
     education: '',
-    resume: null
+    resume: null,
+    username: localStorage.getItem('username'),
+    ApplicantID: null,
+    JobID: "662dfa33b0d02245c39e5472"
   });
 
   const handleChange = (e) => {
@@ -52,12 +59,15 @@ function ApplyPage() {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     const data = new FormData();
     Object.keys(formData).forEach(key => {
         data.append(key, formData[key]);
     });
+    data.append('ApplicantID', null);
+    data.append("Status", "Submitted");
 
     try {
         const response = await axios.post('http://localhost:5000/submit_application', data, {
@@ -75,6 +85,7 @@ function ApplyPage() {
   };
 
   return (
+    
     <main className="main-container">
       <button className="go-back">
         <a href="./" className="redirect-link">&#x2190; Go back</a>

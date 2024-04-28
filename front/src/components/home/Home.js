@@ -9,6 +9,7 @@ import './home.css';
 const JobCard = ({ job }) => {
   // Hook for navigation
   const navigate = useNavigate();
+<<<<<<< Updated upstream
 
   return (
     <div className="job-card-container">
@@ -38,6 +39,18 @@ const JobCard = ({ job }) => {
           </button>
         </section>
       </article>
+=======
+return (
+<div className ="job-card-container">
+<article className="job-card">
+  <div className="company-logo">
+    <img src={job.logo} alt={`${job.company} logo`} />
+  </div>
+  <div className="job-details">
+    <div className="job-header">
+      <h3 className="job-title">{job.title}</h3>
+      <button className="quick-apply-btn" onClick={() => navigate(`./applypage/${job.$oid}`)}>Quick Apply</button>
+>>>>>>> Stashed changes
     </div>
   );
 };
