@@ -1,19 +1,30 @@
 import React from 'react';
+import accountCircleImg from './accountcircle.png';
 import "./header.css";
-import { Link } from 'react-router-dom';
+
 
 const Header = () => {
   console.log(localStorage.getItem('isLoggedIn'));
-  return (
+    return (
     <div className='header'>
-      <h2>
-        <Link to='/'>Home</Link>
-        {!localStorage.getItem('isLoggedIn')===true && <Link to='/login'>Login</Link>}
-        {localStorage.getItem('isLoggedIn') && <Link to='/logout'>Logout</Link>}
-        {localStorage.getItem('isLoggedIn') && <Link to='/applications'>My Applications</Link>}
-        {localStorage.getItem('isLoggedIn') && <Link to='/profile'>My Profile</Link>}
-      </h2>
+      <div className="header-content">
+        <nav className="navigation">
+          <a href="/" className="nav-link">
+            Home
+          </a>
+          <a href="/applications" className="nav-link2">
+            My Applications
+          </a>
+            <p className="jobs-applied"># of jobs applied: 3</p>
+            <p className="applications-left"># of applications left: 5</p>
+            <p className="refresh-time">Refreshing in: 5 days</p>
+
+          <a href="/profile" className="nav-link">
+          <img src={accountCircleImg} alt="User avatar" className="user-avatar" />
+          </a>
+        </nav>
     </div>
+  </div>
   );
 }
 
