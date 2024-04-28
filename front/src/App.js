@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import Login from './pages/login';
+import Home from './pages/home';
+import logo from './logo.svg';
+>>>>>>> cc712b1a5ef4074a4d52ceaea1dce688f59930ee
 import './App.css';
 import axios from 'axios';  // Import Axios 
 import {Routes,Route} from 'react-router-dom';
@@ -11,6 +18,7 @@ import Register from './components/register/register';
 import Application from './components/application/Application';
 import ProfileUpdate from './components/profile/ProfileUpdate';
 function App() {
+<<<<<<< HEAD
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +71,19 @@ function App() {
 
         
     </Routes>
+=======
+  const [data, setData] = useState(null);  // State to store response data
+
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path = "/" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+>>>>>>> cc712b1a5ef4074a4d52ceaea1dce688f59930ee
   );
 }
 
