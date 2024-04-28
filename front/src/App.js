@@ -9,6 +9,7 @@ import Logout from './components/logout/Logout';
 import Register from './components/register/register';
 import Application from './components/application/Application';
 import ProfileUpdate from './components/profile/ProfileUpdate';
+import Applypage from './components/home/applypage';
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -57,6 +58,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/application/:id" element={<Application />} />
       <Route path="/profileupdate" element={<ProfileUpdate />} />
+      <Route path="/applypage" element={<Applypage />} />
 
         
     </Routes>
