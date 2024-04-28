@@ -1,26 +1,27 @@
 import React from 'react'
+import './login.css'
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Header from '../header'
 import './login.css'
 import axios from 'axios';
 import { useState } from 'react';
 
-const Login = () => {
+const Login = ({onLogin}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-          await axios.post('http://127.0.0.1:5000/login', {
-            username,
-            password,
-          });
-          // Optionally, handle success (e.g., show a success message)
-          console.log('Post created successfully');
-        } catch (error) {
-          // Optionally, handle error (e.g., show an error message)
-          console.error('Error creating post:', error);
+        const result = await onLogin(username, password);
+        if (result === true) {
+          console.log('login successful');
+          navigate('/');
         }
       };
 
@@ -40,6 +41,8 @@ const Login = () => {
           <button type="register">Create New Account</button>
         </form>
       </div>
+
+
   </div>
   )
 }

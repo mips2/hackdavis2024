@@ -18,7 +18,8 @@ def login():
     username = data.get('username')#request.form['username']
     password = data.get('password')#request.form['password']
 
-    user = users_collection.find_one({'username': 'admin'})
+    print(username, password)
+    user = users_collection.find_one({'username': username})
 
     if user and user['password'] == password:
         # Authentication successful, set session
@@ -38,7 +39,7 @@ def login():
 def index():
     print("Someone requested root path")
     
-    return dict(status = 200, number = 99)
+    return dict(status = 200, number = 99,message="test")
 
 @app.route('/static/<path:path>')
 def serve_static(path):
