@@ -3,7 +3,6 @@ import Header from '../header'
 import './profile.css'
 
 const Profile = () => {
-    
   return (
     <div className="ProfilePage">
       <header>
@@ -41,21 +40,24 @@ const Profile = () => {
           </div>
         </section>
         <section className="job-applications">
-            <h2>Job Applications</h2>
-            <ul>
-                <li>
-                    <h3>Software Engineer</h3>
-                    <p>Company A</p>
-                    <p>Status: Pending</p>
-                </li>
-                <li>
-                    <h3>Web Developer</h3>
-                    <p>Company B</p>
-                    <p>Status: Approved</p>
-                </li>
-                {/* Add more job applications as needed */}
-            </ul>
+          <h2>Job Applications</h2>
+          <ul>
+            <li>
+              <h3>Software Engineer</h3>
+              <p>Company A</p>
+              <p>Status: Pending</p>
+            </li>
+            <li>
+              <h3>Web Developer</h3>
+              <p>Company B</p>
+              <p>Status: Approved</p>
+            </li>
+            {/* Add more job applications as needed */}
+          </ul>
         </section>
+        <div className="education">
+          <h2>Education</h2>
+        </div>
       </main>
   </div>
   )
