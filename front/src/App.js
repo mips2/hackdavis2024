@@ -61,7 +61,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home jobs={jobs}/>} />
-      <Route path="/applications" element={<Applications loadApplications={loadApplications}/>}/>
+      <Route path="/applications" element={<Applications />}/>
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/logout" element={<Logout />} />
       <Route path="/login" element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
