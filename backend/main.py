@@ -14,18 +14,22 @@ app.secret_key = 'your_secret_key'
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    username = 'admin'#request.form['username']
-    password = 'password'#request.form['password']
+    data = request.json
+    username = data.get('username')#request.form['username']
+    password = data.get('password')#request.form['password']
 
-    user = users_collection.find_one({'username': 'admin'})
+    print(username, password)
+    user = users_collection.find_one({'username': username})
 
     if user and user['password'] == password:
         # Authentication successful, set session
         session['logged_in'] = True
         session['username'] = username
-
+        print("Success")
         return dict(status=200, message='Logged in successfully')
+        
     else:
+        print("Failed")
         return dict(status=401, message='Invalid credentials')
 
 
@@ -35,7 +39,7 @@ def login():
 def index():
     print("Someone requested root path")
     
-    return dict(status = 200, number = 99)
+    return dict(status = 200, number = 99,message="test")
 
 @app.route('/static/<path:path>')
 def serve_static(path):
