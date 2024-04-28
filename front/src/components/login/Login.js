@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../header';
 import axios from 'axios';
+import Home from '../home/Home';
 import { useEffect } from 'react';
 const Login = ({onLogin,isLoggedIn}) => {
 
@@ -11,12 +12,11 @@ const Login = ({onLogin,isLoggedIn}) => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const isLoggedIn1 = localStorage.getItem('isLoggedIn') === 'true';
-        if (isLoggedIn1) {
-            navigate('/');  // Redirects to the home page if the user is already logged in
-        }
-    }, [isLoggedIn, navigate]);  
+
+    if(localStorage.getItem('isLoggedIn') === 'true'){
+        window.location.href = '/';
+        return <Home/>
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
