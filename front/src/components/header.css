@@ -1,71 +1,51 @@
-.navigation {
+.header {
+    border-radius: 70px;
+    background-color: #79addc;
+    align-self: stretch;
     display: flex;
     gap: 20px;
-    margin: auto 0;
+    font-size: 40px;
+    font-weight: 400;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    padding: 10px 10px; /* Adjusted padding to create space from the sides */
+    margin-top: 20px; /* Added margin to create space from the top */
+    margin-left: 20px;
+    margin-right: 20px;
 }
+
+.navigation {
+    display: flex;
+    gap: 11px;
+    flex-grow: 1;
+    justify-content: space-between; 
+    margin: 0;
+}
+
 .navigation a{
-    font-size: 30px;
+    font-family: Arial, sans-serif;
+    color: #000000;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+    margin-right: 50px;
+    margin-left: 50px;
     text-decoration: none;
-    color: white;
-    padding-right: 40px;
+    
 }
 
 .navigation a.active {
     color: black; /* Change the color of active link */
-}
-
-.navigation p{
-    font-size: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-radius: 70px;
+    background-color: 	#ff9770;
+    color: #000;
+    white-space: nowrap;
     justify-content: center;
-    align-items: center;
+    padding: 10px 24px;
 }
 
-.nav-link {
-    text-decoration: none;
-    color: white;
-    align-items: center;
-    padding-right: 40px;
-}
-
-.nav-link2 {
-    text-decoration: none;
-    color: white;
-    align-items: center;
-    padding-right: 80px;
-}
-
-.header {
-    justify-content: center;
-    align-items: center;
-    background-color: #007bff;
-    display: flex;
-    width: 100%;
-    font-size: 40px;
-}
-
-.applications-left {
-    color: #fff500;
-    font-family: Arial, sans-serif;
-}
-
-.jobs-applied {
-    color: #fff500;
-    font: 16px Arial, sans-serif;
-}
-
-.refresh-time {
-    color: #e3e3e3;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-}
-
-.user-avatar {
-    height: 40px;
-    width: auto;
-    padding-top: 6px;
-    padding-left: 50px;
+.navigation a img {
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 650px;
 }

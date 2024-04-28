@@ -2,10 +2,7 @@ import React from 'react'
 import './login.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../header';
-import axios from 'axios';
 import Home from '../home/Home';
-import { useEffect } from 'react';
 const Login = ({onLogin,isLoggedIn}) => {
 
     const [username, setUsername] = useState('');
@@ -27,7 +24,10 @@ const Login = ({onLogin,isLoggedIn}) => {
           navigate('/');
         }
       };
-
+      const handleRegister = () => {
+        // Code to execute when the button is clicked
+        navigate('/register');
+      };
   return (
     <div class="wrap">
       <div class="container2">
@@ -45,7 +45,7 @@ const Login = ({onLogin,isLoggedIn}) => {
               <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
           <button type="submit">Log In</button>
-          <button type="register">Create New Account</button>
+          <button type="register" onClick={handleRegister}>Create New Account</button>
         </form>
       </div>
 
