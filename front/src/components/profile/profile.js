@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './profile.css';
 
 const Profile = () => {
+
+  const baseURL = 'http://localhost:5000'; // Replace with your backend URL
+
+  const axiosInstance = axios.create({
+    baseURL
+  });
+
   // State for edit mode of different fields
   const [editMode, setEditMode] = useState({
     name: false,
@@ -35,6 +43,40 @@ const Profile = () => {
   // Function to save changes and exit edit mode
   const saveChanges = (field) => {
     setEditMode({ ...editMode, [field]: false });
+    let attribute_changed = "";
+    let attr_value;
+    console.log("changed field: ", field);
+    if(field == "phone"){
+      attribute_changed = "phone";
+      attr_value = values.phone;
+    }
+    if(field == "email"){
+      attribute_changed = "email";
+      attr_value = values.email;
+    }
+    if(field == "name"){
+      attribute_changed = "name";
+      attr_value = values.name;
+    }
+    if(field == "address"){
+      attribute_changed = "address";
+      attr_value = values.address;
+    }
+    console.log("You changed ", attribute_changed, " to ", attr_value);
+
+    // do an axios post to backend:
+    axiosInstance.post('/update_profile', {
+      attribute_changed: attribute_changed,
+      new_attr_value: attr_value
+    }).then(response => {
+      if(response.status == 200){
+        console.log("Backend fulfilled our request to update profile.");
+      }
+      else{
+        console.log("Backend responded with ", response.status)
+      }
+    })
+
   };
 
   // Function to cancel changes and exit edit mode
