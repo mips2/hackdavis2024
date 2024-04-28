@@ -146,7 +146,8 @@ const Home = ({ jobs }) => {
   const handleLocationChange = (term) => {
     setLocationTerm(term);
   };
-  if (localStorage.getItem('isCompany') === 'false'){
+  
+  // if (localStorage.getItem('isCompany') === 'false'){
     return (
       <div>
         <Header></Header>
@@ -167,14 +168,14 @@ const Home = ({ jobs }) => {
         </div>
       </div>
     )
-  }
-  else{
-    return(
-      <div>
-        <CompanyPage></CompanyPage>
-      </div>
-    )
-  }
+  // }
+  // else{
+  //   return(
+  //     <div>
+  //       <CompanyPage></CompanyPage>
+  //     </div>
+  //   )
+  // }
 
 }
 
