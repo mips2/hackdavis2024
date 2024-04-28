@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import React, { useEffect, useState } from 'react';
 import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
