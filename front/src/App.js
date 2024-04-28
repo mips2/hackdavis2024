@@ -9,7 +9,7 @@ import Applications from './components/applications/applications';
 import Profile from './components/profile/profile';
 import Logout from './components/logout/Logout';
 import Register from './components/register/register';
-
+import Application from './components/application/Application';
 function App() {
   console.log("logged in: " + localStorage.getItem('isLoggedIn'));
   const [data, setData] = useState(null);  // State to store response data
@@ -56,14 +56,17 @@ function App() {
     }
   };
 
+
+
   return (
     <Routes>
       <Route path="/" element={<Home jobs={jobs}/>} />
-      <Route path="/applications" element={<Applications/>}/>
+      <Route path="/applications" element={<Applications loadApplications={loadApplications}/>}/>
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/logout" element={<Logout />} />
       <Route path="/login" element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/application/:id" element={<Application />} />
 
         
     </Routes>

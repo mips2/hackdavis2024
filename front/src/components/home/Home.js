@@ -3,8 +3,13 @@ import Header from '../header';
 import Login from '../login/Login';
 import './home.css';
 import { useState,useEffect} from 'react';
+import Application from '../application/Application';
+import { useNavigate } from 'react-router-dom';
 
-const JobCard = ({ job }) => (
+const JobCard = ({ job }) => {
+  
+  const navigate = useNavigate();
+return(
 <div className ="job-card-container">
 <article className="job-card">
   <div className="company-logo">
@@ -14,7 +19,7 @@ const JobCard = ({ job }) => (
     <div className="job-header">
       <h3 className="job-title">{job.title}</h3>
       <div className="buttoncont">
-      <button className="quick-apply-btn">Quick Apply</button>
+      <button className="quick-apply-btn" onClick={() => navigate(`/application/${job._id.$oid}`)}>Quick Apply</button>
       </div>
     </div>
     <div className="job-meta">
@@ -31,7 +36,7 @@ const JobCard = ({ job }) => (
 </article>
 </div>
 );
-
+}
 const SearchBar = ({ onSearchChange,onLocationChange }) => (
 <div className="search-bar">
   <div className="search-input">
