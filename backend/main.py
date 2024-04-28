@@ -106,6 +106,7 @@ def profile_update():
 
 @app.route('/',methods=['GET'])
 def index():
+    should_reset()
     documents = jobs_collection.find()
     json_data = dumps(documents)
     print(json_data)
@@ -221,20 +222,17 @@ def reset_apps_value():
     # Access the collection where user profiles are stored
     result = users_collection.update_many(
         {},  # This empty query matches all documents
-        {"$set": {"apps": 2}}  # Set 'apps' to 2 for all matched documents
+        {"$set": {"apps": 3}}  # Set 'apps' to 2 for all matched documents
+        print("changing apps value")
     )
     print(f"Apps value reset for {result.modified_count} users at {datetime.now(pytz.timezone('US/Pacific'))}")
-def schedule_jobs():
-    schedule.every().sunday.at("08:55").do(reset_apps_value)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(60)  # Check every minute
+def should_reset():
+    # Check if today is Sunday and current time is around midnight PST
+    print("Checking if its sunday")
+    now = datetime.now(pytz.timezone('US/Pacific'))
+    if now.weekday() == 6 and now.hour == 9:  # 6 == Sunday, 0 == midnight
+        reset_apps_value()
 if __name__ == '__main__':
-    from threading import Thread
-
+    reset_apps_value()
     # Running the Flask app
     app.run(debug=True, use_reloader=False) 
-
-    scheduler_thread = Thread(target=schedule_jobs)
-    scheduler_thread.start()
