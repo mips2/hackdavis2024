@@ -7,7 +7,9 @@ import Home from './components/home/Home';
 import Login from './components/login/Login';
 import Applications from './components/applications/applications';
 import Profile from './components/profile/profile';
+import Logout from './components/logout/Logout';
 function App() {
+  console.log("logged in: " + localStorage.getItem('isLoggedIn'));
   const [data, setData] = useState(null);  // State to store response data
   const [isLoggedIn, setLogin] = useState(false);
   useEffect(() => {
@@ -26,20 +28,20 @@ function App() {
 
   const handleLogin = async (username,password) => {
     try {
+      console.log("trying")
       const response = await axios.post('http://127.0.0.1:5000/login', {
         username,
         password,
       });
       console.log('Post created successfully');
       if (response.data.status != 200) {
-        setLogin(false);
         console.log('login failed');
         return false;
       }
       else{
-        console.log(response);
+        console.log(response);  
         console.log('login successfull');
-        setLogin(true);
+        localStorage.setItem('isLoggedIn', 'true');
         return true;
       }
     } catch (error) {
@@ -47,14 +49,14 @@ function App() {
     }
   };
 
-  
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login onLogin={handleLogin} />} />
-      <Route path="/login" element= {isLoggedIn ? (<Home />) : (<Login onLogin={handleLogin} />)}/>
       <Route path="/applications" element={<Applications/>}/>
       <Route path="/profile" element={<Profile/>}/>
+      <Route path="/logout" element={<Logout />} />
+      <Route path="/login" element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />} />
+
         
     </Routes>
   );
