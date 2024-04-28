@@ -1,10 +1,7 @@
 import axios from 'axios';
-<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import './applypage.css';
-=======
 import { useParams } from 'react-router-dom';
->>>>>>> Stashed changes
 
 function InputField({ label, name, type, value, onChange, placeholder }) {
   return (

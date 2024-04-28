@@ -262,6 +262,7 @@ from werkzeug.utils import secure_filename
 def submit_application():
     # Directly parse the non-file form data
     data = request.form.to_dict()
+
     print(data)
     data['ApplicantID'] = db['Users'].find_one({'username': data['username']})['_id']
     data["Status"] = "Pending"

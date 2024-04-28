@@ -40,15 +40,9 @@ function Applications() {
       <Header></Header>
 
       <div className="num-container">
-<<<<<<< Updated upstream
       <p className="numjob">NUMBER OF JOBS APPLIED TO: {applications.length}</p>
-      <p className="numapp">NUMBER OF APPLICATIONS LEFT: {/*Assuming num applications left obj exists*/}</p>
+      <p className="numapp">NUMBER OF APPLICATIONS LEFT: 2 {/*Assuming num applications left obj exists*/}</p>
       <p className="refreshrate">REFRESHING IN: {/*Assuming refresh rate obj exists*/} days</p>
-=======
-      <p className="numjob">Number of jobs applied to: {applications.length}</p>
-      <p className="numapp">Number of applications left: 2 {/*Assuming num applications left obj exists*/}</p>
-      <p className="refreshrate">Refreshing in: {/*Assuming refresh rate obj exists*/} days</p>
->>>>>>> Stashed changes
       </div>
 
       <div className ="app-card-container">
