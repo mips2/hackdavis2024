@@ -4,6 +4,11 @@ from flask_cors import CORS
 from pymongo import MongoClient
 from bson.json_util import dumps
 from bson import ObjectId, json_util
+import schedule
+import time
+from datetime import datetime
+import pytz
+
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -190,6 +195,7 @@ def register():
             "email": email,
             "phone": phone,
             "address": address,
+            "apps": 2,
             "data": []
 }
         results = users_collection.insert_one(document)
@@ -210,6 +216,25 @@ def profileData():
             "status": 401,
             "message": "No user found with that username"
         })
+    
+def reset_apps_value():
+    # Access the collection where user profiles are stored
+    result = users_collection.update_many(
+        {},  # This empty query matches all documents
+        {"$set": {"apps": 2}}  # Set 'apps' to 2 for all matched documents
+    )
+    print(f"Apps value reset for {result.modified_count} users at {datetime.now(pytz.timezone('US/Pacific'))}")
+def schedule_jobs():
+    schedule.every().sunday.at("08:55").do(reset_apps_value)
 
+    while True:
+        schedule.run_pending()
+        time.sleep(60)  # Check every minute
 if __name__ == '__main__':
-    app.run(debug=True)
+    from threading import Thread
+
+    # Running the Flask app
+    app.run(debug=True, use_reloader=False) 
+
+    scheduler_thread = Thread(target=schedule_jobs)
+    scheduler_thread.start()
