@@ -1,9 +1,10 @@
 import React from 'react'
 import Header from '../header'
-
+import Login from '../login/Login';
 const Home = () => {
     if (localStorage.getItem('isLoggedIn') === 'false') {
         window.location.href = '/login';
+        return <Login/>
     }
   return (
     <div>
