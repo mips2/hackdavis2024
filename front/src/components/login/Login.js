@@ -25,7 +25,11 @@ const Login = () => {
       };
 
   return (
-    <div>
+    <div class="wrap">
+      <div class="container2">
+        <h2>Website Name</h2>
+        <p>DESCTIP</p>
+      </div>
       <div class="container">
         <form class="login-form" onSubmit={handleSubmit}>
           <div class="form-group">
