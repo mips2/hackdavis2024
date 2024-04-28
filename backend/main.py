@@ -39,7 +39,7 @@ def login():
 def index():
     print("Someone requested root path")
     
-    return dict(status = 200, number = 99)
+    return dict(status = 200, number = 99,message="test")
 
 @app.route('/static/<path:path>')
 def serve_static(path):
