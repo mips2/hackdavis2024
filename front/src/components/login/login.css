@@ -15,16 +15,17 @@ body {
 .login-form {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    width: 400px;
 
-.login-form h2 {
-    margin-top: 0;
 }
 
 .form-group {
     margin-bottom: 15px;
+    padding-right: 20px;
+    justify-content: center;
+
 }
 
 .form-group label {
@@ -36,7 +37,9 @@ body {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 10px;
+    height: 30px;
+
 }
 
 button[type="submit"] {
@@ -44,10 +47,37 @@ button[type="submit"] {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 10px;
     cursor: pointer;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+    
+}
+
+button[type="register"] {
+    background-color: #19bb3f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button[type="register"]:hover {
+    background-color: #10922e;
+    
+}
+
+.password, .username {
+    margin-bottom: 10px;
 }
