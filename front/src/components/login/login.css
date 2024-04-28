@@ -104,6 +104,17 @@ button[type="register"]:hover {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.showpw-container{
+    display: flex;
+    justify-content: end;
+}
+.showpw {
+    width: 50%;
+    height: 30px;
+    font-size: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
 
 @media only screen and (max-width: 768px) {
     .wrap {

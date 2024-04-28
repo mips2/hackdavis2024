@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProfileComponent from './ProfileComponent';
 
+import Header from '../header';
 import './profile.css';
 
 import Login from '../login/Login';
@@ -163,17 +164,7 @@ const renderField = (field) => {
 
   return (
     <div className="ProfilePage">
-      <header>
-        <h1>Welcome {localStorage.getItem('username')}</h1>
-        <nav>
-            <ul>
-                <li><a href="/"></a></li>
-                <li><a href="/applications">My Applications</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout" className="logout-button">Logout</a></li>
-            </ul>
-        </nav>
-      </header>
+      <Header></Header>
       <main>
         <section className="profile-info">
           <h2>Profile Information</h2>
