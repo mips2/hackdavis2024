@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory,session,request
+from flask import Flask, send_from_directory,session,request,jsonify
 import os
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -6,8 +6,7 @@ from bson.json_util import dumps
 from bson import ObjectId, json_util
 
 app = Flask(__name__)
-CORS(app)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, supports_credentials=True)
 client = MongoClient('mongodb+srv://root:admin@cluster.v5xklt0.mongodb.net/')
 db = client['App']
 users_collection = db['Users']
@@ -45,10 +44,58 @@ def update_profile():
     # database interactions
     return dict(status = 200)
 
-@app.route('/profile')
-def get_profile():
-    return 0
+@app.route('/profile',methods=['GET','POST'])
+def profile():
+    data = request.json
+    user = db.Users.find_one({"username": data.get('username')}, {"_id": 1})
+    print(user)
+    if user:
+        user_id = user['_id']
+        profile = (db.profiles.find_one({"userID": ObjectId(user_id)}))
+        print(profile)
+        if profile:
 
+            json_data = json_util.dumps({
+            "status": 200,
+            "data": profile
+        })
+
+            return json_data
+
+    else:
+        return json_util.dumps({
+            "status": 401,
+            "message": "No user found with that username"
+        })
+
+@app.route('/profile_update',methods=['GET','POST'])
+def profile_update():
+    data = request.json
+    user = db.Users.find_one({"username": data.get('username')}, {"_id": 1})
+    print(user)
+    if user:
+        user_id = user['_id']
+        profile = (db.profiles.find_one({"userID": ObjectId(user_id)}))
+        print(profile)
+        if profile:
+            result = db.profiles.update_one(
+            {"userID": user_id},  # Filter matching the document to update
+           
+            {"$push": {data.get('update_field'): data.get('new_value')}}
+           # Update operation
+)
+
+            json_data = json_util.dumps({
+            "status": 200,
+        })
+
+            return json_data
+
+    else:
+        return json_util.dumps({
+            "status": 401,
+            "message": "No user found with that username"
+        })
 
 
 
@@ -60,6 +107,18 @@ def index():
     print("Someone requested root path")
     
     return dict(status = 200, number = 99,data=json_data)
+
+
+
+
+@app.route('/test1',methods=['GET','POST'])
+def test1():
+    username = request.json.get('username')
+    Field =request.json.get('data')
+    return dict(status = 200, number = 99,data=data)
+
+
+
 
 @app.route('/applications',methods=['GET','POST'])
 def applications():
@@ -136,6 +195,7 @@ def register():
         results = users_collection.insert_one(document)
         return dict(status = 200, number = 99,message="test")
     
+
 
 if __name__ == '__main__':
     app.run(debug=True)
