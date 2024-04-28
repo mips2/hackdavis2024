@@ -51,6 +51,7 @@ const Register = ({onLogin,isLoggedIn}) => {
                     <input type="text" placeholder="Enter your address" id="address" name="address" required />
                 </div>
                 <div class="form-group">
+
                     <label for="username">Username:</label>
                     <input type="text" placeholder="Enter your username" id="username" name="username" required />
                 </div>
@@ -61,6 +62,7 @@ const Register = ({onLogin,isLoggedIn}) => {
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password:</label>
                     <input type="password" placeholder="Confirm password" id="confirm-password" name="confirm-password" required />
+
                 </div>
                 <button type="submit">Register</button>
             </form>
