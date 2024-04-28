@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import axios from 'axios';  // Import Axios 
 import {Routes,Route} from 'react-router-dom';
 import Home from './components/home/Home';
@@ -10,6 +9,7 @@ import Logout from './components/logout/Logout';
 import Register from './components/register/register';
 import Application from './components/application/Application';
 import ProfileUpdate from './components/profile/ProfileUpdate';
+
 function App() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {

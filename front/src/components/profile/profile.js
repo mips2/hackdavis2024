@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './profile.css';
+import React, { useState } from 'react';
 import ProfileComponent from './ProfileComponent';
+import { useEffect } from 'react';
+import './profile.css';
+
 import Login from '../login/Login';
+
 const Profile = () => {
 
   const baseURL = 'http://localhost:5000'; // Replace with your backend URL
@@ -21,12 +24,44 @@ const Profile = () => {
 
   // State for the values of different fields
     const [values, setValues] = useState({
-      name: localStorage.getItem('username'),
-      email: 'johndoe@example.com',
-      phone: '+1234567890',
-      address: '123 Main St, City, Country',
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
     });
 
+  useEffect(() => {
+    console.log("loadingProfile")
+    loadProfile();  // Call loadProfile when the component mounts
+  }, []); // Empty dependency array ensures this runs only once on component mount
+
+  const loadProfile = async () => {
+    try {
+      console.log("Loading profile...");
+      const username = localStorage.getItem('username');
+      if (!username) {
+        console.error("No username found in localStorage.");
+        return; // Exit if no username is found
+      }
+      const response = await axiosInstance.post('/profile1', { username });
+      if (response.data.status === 200) {
+        console.log("200")
+        console.log(response.data.data);
+        setValues({
+          name: response.data.data.name || '',
+          email: response.data.data.email || '',
+          phone: response.data.data.phone || '',
+          address: response.data.data.address || '',
+        });
+      } else {
+        console.log("L bozo")
+        console.error("No user found with that username");
+      }
+    } catch (error) {
+      console.error("Error loading the profile:", error);
+    }
+  };
+    
   // State for storing original values before editing
   const [originalValues, setOriginalValues] = useState({});
 
@@ -156,4 +191,5 @@ const renderField = (field) => {
   );
 }
 
-export default Profile;
+export default Profile; 
+
