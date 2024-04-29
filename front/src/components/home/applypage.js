@@ -54,12 +54,16 @@ function ApplyPage() {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     const data = new FormData();
     Object.keys(formData).forEach(key => {
         data.append(key, formData[key]);
     });
+    data.append('username', localStorage.getItem('username'));
+    data.append('ApplicantID', null);
+    data.append("Status", "Submitted");
 
     try {
         const response = await axios.post('http://localhost:5000/submit_application', data, {
