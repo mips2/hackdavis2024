@@ -1,7 +1,14 @@
 # Emply
 
-Emply is a site intended for employers and applicants who are looking for specific matches. Limiting the number of applications an applicant can submit forces them to be selective regarding where they apply. On the employer endpoint, the reduced amount of applications would allow them to have a smaller pool of applications to choose from, and the ones that they see are ones who are genuinely interested in that specific position at that company. This counters the oversaturation of applications. 
-The idea is to give each individual applicant a fighting chance when applying as they are not competing against "ghost" applications (people who apply to 100 different positions but are really only interested in 5-6 specific positions)
+### The internship application process is currently flawed for both students and employers
+
+The current strategy for applying to internships involves applying to anything and everything and hoping that something sticks.  This results in employers receiving more applicants than they can ever possibly look through, most of whom probably didn't even read through the job requirements.  Consequently, many qualified candidates get lost in an endless sea of low-quality applications.
+
+Emply revolutionizes the application process by restricting the number of applications an individual can submit within a given timeframe, such as five per week. This innovative approach compels applicants to carefully consider their choices, fostering a culture of selectivity and intentionality.  
+
+![image](https://github.com/mips2/hackdavis2024/assets/92408910/20d20e6c-676d-42cf-a579-9c45e2f258fa)
+
+**Developed at HackDavis 2024 in 24 hours**
 
 ## Backend:
 
